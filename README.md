@@ -47,6 +47,7 @@ Standard proposal for JSON based ORM relational schema definitions.
 ## Scope
 
 - ORMs for software development
+- Single server, single database schemas
 - Serving `.json` as a type of export/import for relational database software, besides traditionals `.sql` or `.csv` files
 
 ## Specification
