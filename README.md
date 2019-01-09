@@ -162,7 +162,7 @@ Some notes on this schema:
     }
     ```
 
-    Which means : a book can have many orders, and many orders can have many books in it. It is a join table and it requires to be stored in a separate table, thus the `bookOrder` table.
+    Which means : a book can have many orders, and many orders can have many books in it. It is a join table and it required to be stored in a separate table, thus the `book_order` table.
 
 ## Implementations
 
