@@ -14,7 +14,7 @@ Standard proposal for JSON based ORM relational schema definitions.
     "properties": {
       "id": {
         "type": "unsigned-int",
-        "autoincremented": true
+        "incremented": true
       },
       "name": {
         "type": "string",
