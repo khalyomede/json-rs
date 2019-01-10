@@ -243,14 +243,18 @@ RsJson::addType('longitude', 'float', [
 
 ### Types
 
-| integers           | dates     | strings      |
-|--------------------|-----------|--------------|
-| small-int          | time      | small-string |
-| small-unsigned-int | date      | string       |
-| int                | datetime  | big-string   |
-| unsigned-int       | timestamp |              |
-| big-int            |           |              |
-| big-unsigned-int   |           |              |
+In bold, the native types.
+
+| integers                | dates     | strings       |
+|-------------------------|-----------|---------------|
+| small-integer           | time      | small-string  |
+| small-unsigned-integer  | date      | **string**    |
+| **integer**             | datetime  | medium-string |
+| **unsigned-integer**    | timestamp | big-string    |
+| medium-integer          |           |               |
+| medium-unsigned-integer |           |               |
+| big-integer             |           |               |
+| big-unsigned-int        |           |               |
 
 ### Charsets
 
