@@ -158,7 +158,7 @@ If type is `relation`, keys `minimum`, `maximum` and `reference` are mandatory.
           "type": "relation",
           "reference": "book",
           "minimum": 0,
-          "maximum": "infinity"
+          "maximum": "*"
         }
       }
     }
@@ -174,7 +174,7 @@ Some notes on this schema:
 - `relation` are annoted by:
   - `minimum` and `maximum`: 1 for both is equivalent to a required "many to one"
   - 0 for `minimum` and 1 for `maximum` is equivalent to a non required "many to one"
-  - 0 for `minimum` and `infinity` for `maximum` means non required "one to many"
+  - 0 for `minimum` and `*` for `maximum` means non required "one to many"
   - `many to many` is represented by:
 
     ```json
