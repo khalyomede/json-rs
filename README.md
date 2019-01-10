@@ -1,7 +1,7 @@
-# JSON/RS
+# RS/JSON
 
-![](https://img.shields.io/github/tag/khalyomede/json-rs.svg)
-![](https://img.shields.io/github/license/khalyomede/json-rs.svg)
+![](https://img.shields.io/github/tag/khalyomede/rs-json.svg)
+![](https://img.shields.io/github/license/khalyomede/rs-json.svg)
 
 
 Standard proposal for JSON based ORM relational schema definitions.
@@ -37,10 +37,12 @@ Standard proposal for JSON based ORM relational schema definitions.
 
 ## Goals
 
+RS/JSON, or Relational Schema over JSON, is a file format to help build storage schema for relational storages.
+
 1. Providing a unified API to ORMs.
 2. Extracting the business schema out of the code. 
 3. Facilitate the migrations from an ORM to another.
-4. Serve as "single source of truth", even for migrations generation.
+4. To serve as "single source of truth", even for migrations generation.
 5. Versionable.
 6. Giving application-level guards to increase the database data quality on insert and update.
 
@@ -91,14 +93,14 @@ _in progress_
           "length": 17,
           "unique": true,
           "guards": ["isbn-13"]
-        }
-      },
-      "relations": {
+        },
         "author": {
+          "type": "relation",
+          "reference": "author",
           "minimum": 1,
           "maximum": 1
         }
-      }
+      },
     },
     "author": {
       "identifier": ["id"],
@@ -123,11 +125,10 @@ _in progress_
           "type": "small-int",
           "required": true,
           "guards": ["adult"]
-        }
-      },
-      "relations": {
-        "book": {
-          "as": "books",
+        },
+        "books": {
+          "type": "relation",
+          "reference": "book",
           "minimum": 0,
           "maximum": "infinity"
         }
@@ -142,7 +143,7 @@ Some notes on this schema:
 - It supports versioning, to help confront migrations
 - In MySQL for example, `small-string` would be converted to `varchar(255)` (if you use `utf8`) or `varchar(191)` (if you use `utf8mb4`)
 - **Guards** are application-level validators, they perform before the data is about to be inserted or updated (they should be as quick as possible)
-- `relations` are annoted by:
+- `relation` are annoted by:
   - `minimum` and `maximum`: 1 for both is equivalent to a required "many to one"
   - 0 for `minimum` and 1 for `maximum` is equivalent to a non required "many to one"
   - 0 for `minimum` and `infinity` for `maximum` means non required "one to many"
@@ -152,10 +153,10 @@ Some notes on this schema:
     {
       "schema": {
         "book": {
-          "relations": {
-            "order": {
-              "as": "orders",
-              "through": ["book_order"]
+          "properties": {
+            "orders": {
+              "reference": "order",
+              "through": "book_order"
             }
           }
         }
@@ -185,3 +186,5 @@ Implementations should follow some standard recomendations for building an ORM t
   - `JsonRs::addGuard(string name, callable callback): void`
 - Native guards (like `fillable`, ...) should be also extended for a minimum of code legacy and to be overridable by the user
   - `JsonRs::editGuard(string name, callable callback): void`
+- The `length` attribute or the evaluated length (example: `small-string` is a 255 length string) should basically trigger a `max:<length>` (so `max:255` in this case) guard (without having to add this particular guard)
+- Files should be prefixed with `.rs.json`
