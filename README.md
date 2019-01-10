@@ -34,6 +34,7 @@ Standard proposal for JSON based ORM relational schema definitions.
 - [Guidelines](#guidelines)
 - [Example: Book store](#example-book-store)
 - [Implementations](#implementations)
+- [References](#references)
 
 ## Goals
 
@@ -54,7 +55,32 @@ RS/JSON, or Relational Schema over JSON, is a file format to help build storage 
 
 ## Specification
 
-_in progress_
+In bold, required keys.
+
+- **version**: (string) [semver](https://semver.org/) to version your schema
+- **license**: (string) licence name for your schema
+- **charset**: (string) one of the supported charset (see [references](#references))
+- **schema**: (object) each key is a "table" (or "document")
+  - _table or document name_: (object)
+    - **identifier**: (array) the "primary keys" of your "table"
+    - uniques: (object) each key is the name of the unique constraint
+      - _unique constraint name_: (array) a list of column that form a single unique constraint
+    - **properties**: (object) each key is a "column" or "field"
+      - _property name_: (object)
+        - **type**: (string) one of the supported field type (see [references](#references))
+        - incremented: (boolean) whether the column is automatically incremented or not
+        - required: (boolean) whether the field is needed or not (e.g. nullable)
+        - unique: (boolean) whether the field is 
+        - length: (integer) used to manually set a maximum of bytes
+        - precision: (integer) with a float type, used to define the precision
+        - guards: (array) a list of guards that perform application-level validation before actually inserting or updating
+        - reference: (string) used with `"type": "relation"` and specify the "table"
+        - minimum: (integer) used with `"type": "relation"` to set the cardinality
+        - maximum: (integer) used with `"type": "relation"` to set the cardinality
+        - through: (string) used with `"type": "relation"` to specify an intermediate table in a many to many relation
+        - charset: (string) used to override the charset defined globally
+
+If type is `relation`, keys `minimum`, `maximum` and `reference` are mandatory.
 
 ## Guidelines
 
@@ -73,10 +99,14 @@ _in progress_
 {
   "version": "0.1.0",
   "license": "MIT",
-  "charset": "utf8mb4",
+  "charset": "utf8-mb4",
   "schema": {
     "book": {
       "identifier": ["id"],
+      "uniques": {
+        "unique_book_name": ["name"],
+        "unique_book_isbn": ["isbn"]
+      },
       "properties": {
         "id": {
           "type": "unsigned-int",
@@ -85,13 +115,11 @@ _in progress_
         "name": {
           "type": "small-string",
           "required": "true",
-          "unique": true,
           "guards": ["filled"]
         },
         "isbn": {
           "type": "string",
           "length": 17,
-          "unique": true,
           "guards": ["isbn-13"]
         },
         "author": {
@@ -180,11 +208,55 @@ Implementations should follow some standard recomendations for building an ORM t
   - Validation (guard) failed
   - ...
 - A parser should be top priority to avoid checks on the actual ORM code, with at least 2 method:
-  - `JsonRs::isValid(string schema): bool`
-  - `JsonRs::parse(string schema): object`
+  - `RsJson::isValid(string schema): bool`
+  - `RsJson::parse(string schema): object`
 - Guards should be extendable by the end developer
-  - `JsonRs::addGuard(string name, callable callback): void`
+  - `RsJson::addGuard(string name, callable callback): void`
 - Native guards (like `fillable`, ...) should be also extended for a minimum of code legacy and to be overridable by the user
-  - `JsonRs::editGuard(string name, callable callback): void`
+  - `RsJson::editGuard(string name, callable callback): void`
 - The `length` attribute or the evaluated length (example: `small-string` is a 255 length string) should basically trigger a `max:<length>` (so `max:255` in this case) guard (without having to add this particular guard)
 - Files should be prefixed with `.rs.json`
+- charsets supported are listed below, and should be converted to the storage engine encoding name (see [references](#references))
+- Follow the specification
+- User should be able to add customs types in order to speed up the schema creation using `RsJson::addType(string name, string native_type, dict parameters): void` where the `parameters` are the keys set to the desired values. The library itself should use this method to create the basic types. Here is two examples, one for the library to specify a basic type, and another for the user to specify a custom type (in PHP):
+
+```php
+use RsJson\RsJson;
+
+// Setting a default type
+RsJson::addType('small-string', 'string', [
+  'length' => 255
+]);
+
+// Setting a custom type "longitude"
+RsJson::addType('longitude', 'float', [
+  'length' => 3,
+  'precision' => 8,
+  'guards' => ['min:-180', 'max:180']
+]);
+```
+
+## References
+
+- [Types](#types)
+- [Charsets](#charsets)
+
+### Types
+
+| integers           | dates     | strings      |
+|--------------------|-----------|--------------|
+| small-int          | time      | small-string |
+| small-unsigned-int | date      | string       |
+| int                | datetime  | big-string   |
+| unsigned-int       | timestamp |              |
+| big-int            |           |              |
+| big-unsigned-int   |           |              |
+
+### Charsets
+
+| name         |
+|--------------|
+| utf8         |
+| utf8-mb4     |
+| iso-8859-1   |
+| windows-1256 |
