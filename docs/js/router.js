@@ -3,7 +3,7 @@ const router = new VueRouter({
 	routes: [
 		{
 			name: "index",
-			path: "/",
+			path: "/rs-json",
 			component: function(resolve, reject) {
 				template(resolve, reject, "index", {
 					mounted: function() {
@@ -14,7 +14,7 @@ const router = new VueRouter({
 		},
 		{
 			name: "404",
-			path: "*",
+			path: "/rs-json/*",
 			component: function(resolve, reject) {
 				template(resolve, reject, "404");
 			}
