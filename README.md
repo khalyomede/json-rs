@@ -40,7 +40,7 @@ Standard proposal for JSON based ORM relational schema definitions.
 
 RS/JSON, or Relational Schema over JSON, is a file format to help build storage schema for relational storages.
 
-1. Providing a unified API to ORMs.
+1. Providing a unified API across ORMs and database softwares.
 2. Extracting the business schema out of the code. 
 3. Facilitate the migrations from an ORM to another.
 4. To serve as "single source of truth", even for migrations generation.
