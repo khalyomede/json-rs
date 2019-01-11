@@ -11,6 +11,13 @@ const router = new VueRouter({
 					}
 				});
 			}
+		},
+		{
+			name: "404",
+			path: "*",
+			component: function(resolve, reject) {
+				template(resolve, reject, "404");
+			}
 		}
 	]
 });
