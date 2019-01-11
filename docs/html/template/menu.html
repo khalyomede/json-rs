@@ -1,0 +1,23 @@
+<div>
+	<nav class="orange accent-3">
+		<div class="nav-wrapper">
+			<router-link to="/" class="brand-logo">RS/JSON</router-link>
+			<router-link
+				to="#"
+				data-target="mobile-demo"
+				class="sidenav-trigger"
+				><i class="material-icons">menu</i></router-link
+			>
+			<ul class="right hide-on-med-and-down">
+				<li><router-link to="/example">Example</router-link></li>
+				<li>
+					<router-link to="/documentation">Documentation</router-link>
+				</li>
+			</ul>
+		</div>
+	</nav>
+	<ul class="sidenav" id="mobile-demo">
+		<li><router-link to="/example">Example</router-link></li>
+		<li><router-link to="/documentation">Documentation</router-link></li>
+	</ul>
+</div>
