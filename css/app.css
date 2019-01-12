@@ -1,0 +1,33 @@
+div {
+	font-family: "Open Sans", sans-serif;
+}
+
+code {
+	font-family: "Fira Mono", monospace !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.brand-logo,
+.btn {
+	font-family: "Varela Round", sans-serif;
+}
+
+.brand-logo {
+	padding-left: 15px !important;
+	padding-right: 15px !important;
+}
+
+body {
+	display: flex;
+	min-height: 100vh;
+	flex-direction: column;
+}
+
+main {
+	flex: 1 0 auto;
+}

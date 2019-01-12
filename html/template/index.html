@@ -1,0 +1,97 @@
+<div class="container">
+	<div class="row">
+		<div class="col s12"><br /></div>
+		<div class="col s12">
+			<div class="center-align">
+				<strong><h2>Relational Schema over JSON</h2></strong>
+			</div>
+		</div>
+		<div class="col s12"><br /></div>
+		<div class="col s12 m10 offset-m1 l8 offset-l2">
+			<div class="card white">
+				<div class="card-content">
+					<span class="card-title">example.rs.json</span>
+					<pre><code class="language-json">{
+  "version": "0.1.0",
+  "license": "MIT",
+  "charset": "utf8-mb4",
+  "schema": {
+    "book": {
+      "identifier": ["id"],
+      "uniques": {
+        "unique_book_name": ["name"]
+      }
+      "properties": {
+        "id": {
+          "type": "integer",
+          "incremented": true
+        },
+        "name": {
+          "type": "small-string",
+          "required": true,
+          "guards": ["filled"]
+        }
+      }
+    }
+  }    
+}</code></pre>
+				</div>
+			</div>
+		</div>
+		<div class="col s12"><br /></div>
+		<div class="col s12">
+			<div class="center-align">
+				<router-link
+					to="/rs-json/example"
+					class="waves-effect waves-light btn amber darken-3"
+					>Getting started</router-link
+				>
+			</div>
+		</div>
+		<div class="col s12"><br /></div>
+		<div class="col s12">
+			<h3>Single source of truth</h3>
+			<div class="flow-text">
+				RS/JSON is a standard proposal for relational schemas. The goal
+				is to unify every softwares, like your relational database
+				software, ORM and migration manager. It is a meta-language over
+				all these tools, to help you focus only once on your database
+				schema.
+			</div>
+		</div>
+		<div class="col s12"><br /></div>
+		<div class="col s12">
+			<h3>Raise your data quality</h3>
+			<div class="flow-text">
+				With the help of "guards", which are performing
+				pre-insert/update validations on your software back-end, your
+				data are ensured to be the cleanest possible. This is a good
+				thing when planing on harvesting your data using data analysis
+				tools.
+			</div>
+		</div>
+		<div class="col s12"><br /></div>
+		<div class="col s12">
+			<h3>Scalable</h3>
+			<div class="flow-text">
+				Designed to keep the same performance whether you have 10 or
+				1000 objects, thanks to JSON key-pair architecture. <br />
+				Native types are not enough? Create your own types to abstract
+				your work and focus on your business. <br />
+				No guard fit your need? Create a customized one.
+			</div>
+		</div>
+		<div class="col s12"><br /></div>
+		<div class="col s12"><br /></div>
+	</div>
+	<div class="fixed-action-btn">
+		<a
+			href="https://github.com/khalyomede/rs-json/edit/master/docs/html/template/index.html"
+			class="btn-floating btn-large white tooltipped"
+			data-position="left"
+			data-tooltip="Propose a change"
+		>
+			<i class="large material-icons black-text">mode_edit</i>
+		</a>
+	</div>
+</div>
