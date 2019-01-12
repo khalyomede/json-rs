@@ -211,29 +211,29 @@
                 <div class="card-content">
                     <div class="card-title">book-store.rs.json</div>
                     <pre><code class="language-json">{
-    "version": "0.1.0",
-    "license": "MIT",
-    "charset": "utf8",
-    "schema": {
-        "book": {
-            "identifier": ["id"],
-            "properties": {
-                "id": {
-                    "type": "integer"
-                },
-                "name": {
-                    "type": "string",
-                    "length": 128,
-                    "required": true
-                },
-                "isbn": {
-                    "type": "string",
-                    "required": true,
-                    "guards": ["isbn-13"]
-                }
-            }
+  "version": "0.1.0",
+  "license": "MIT",
+  "charset": "utf8",
+  "schema": {
+    "book": {
+      "identifier": ["id"],
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string",
+          "length": 128,
+          "required": true
+        },
+        "isbn": {
+          "type": "string",
+          "required": true,
+          "guards": ["isbn-13"]
         }
-    }                
+      }
+    }
+  }                
 }</code></pre>
                 </div>
             </div>
@@ -248,30 +248,30 @@
                 <div class="card-content">
                     <div class="card-title">book-store.rs.json</div>
                     <pre><code class="language-json">{
-    "version": "0.1.0",
-    "license": "MIT",
-    "charset": "utf8",
-    "schema": {
-        "book": {
-            "identifier": ["id"],
-            "properties": {
-                "id": {
-                    "type": "integer",
-                    "incremented": true
-                },
-                "name": {
-                    "type": "string",
-                    "length": 128,
-                    "required": true
-                },
-                "isbn": {
-                    "type": "string",
-                    "required": true,
-                    "guards": ["isbn-13"]
-                }
-            }
+  "version": "0.1.0",
+  "license": "MIT",
+  "charset": "utf8",
+  "schema": {
+    "book": {
+      "identifier": ["id"],
+      "properties": {
+        "id": {
+          "type": "integer",
+          "incremented": true
+        },
+        "name": {
+          "type": "string",
+          "length": 128,
+          "required": true
+        },
+        "isbn": {
+          "type": "string",
+          "required": true,
+          "guards": ["isbn-13"]
         }
-    }                
+      }
+    }
+  }                
 }</code></pre>
                 </div>
             </div>
@@ -292,35 +292,35 @@
                 <div class="card-content">
                     <div class="card-title">book-store.rs.json</div>
                     <pre><code class="language-json">{
-    "version": "0.1.0",
-    "license": "MIT",
-    "charset": "utf8",
-    "schema": {
-        "book": {
-            "identifier": ["id"],
-            "properties": {
-                "id": {
-                    "type": "integer",
-                    "incremented": true
-                },
-                "name": {
-                    "type": "string",
-                    "length": 128,
-                    "required": true
-                },
-                "isbn": {
-                    "type": "string",
-                    "required": true,
-                    "guards": ["isbn-13"]
-                },
-                "author": {
-                    "type": "relation",
-                    "minimum": 1,
-                    "maximum": 1
-                }
-            }
+  "version": "0.1.0",
+  "license": "MIT",
+  "charset": "utf8",
+  "schema": {
+    "book": {
+      "identifier": ["id"],
+      "properties": {
+        "id": {
+          "type": "integer",
+          "incremented": true
+        },
+        "name": {
+          "type": "string",
+          "length": 128,
+          "required": true
+        },
+        "isbn": {
+          "type": "string",
+          "required": true,
+          "guards": ["isbn-13"]
+        },
+        "author": {
+          "type": "relation",
+          "minimum": 1,
+          "maximum": 1
         }
-    }                
+      }
+    }
+  }                
 }</code></pre>
                 </div>
             </div>
