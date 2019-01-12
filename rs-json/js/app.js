@@ -2,6 +2,12 @@ const router = new VueRouter({
 	mode: "history",
 	routes: [
 		{
+			path: "/",
+			beforeEnter: (to, from, next) => {
+				next({ name: "index" });
+			}
+		},
+		{
 			name: "index",
 			path: "/rs-json",
 			component: function(resolve, reject) {
