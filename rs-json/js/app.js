@@ -26,6 +26,17 @@ const router = new VueRouter({
 			}
 		},
 		{
+			name: "documentation-guards",
+			path: "/rs-json/documentation/guards",
+			component: function(resolve, reject) {
+				template(resolve, reject, "documentation/guards", {
+					mounted: function() {
+						Prism.highlightAll();
+					}
+				});
+			}
+		},
+		{
 			name: "example",
 			path: "/rs-json/example",
 			component: function(resolve, reject) {
@@ -59,6 +70,8 @@ const vue = new Vue({
 });
 
 router.beforeEach(function(to, from, next) {
+	console.log("to", to);
+
 	vue.loading = true;
 
 	next();
