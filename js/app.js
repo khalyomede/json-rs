@@ -38,13 +38,6 @@ const router = new VueRouter({
 			}
 		},
 		{
-			name: "page-not-found",
-			path: "/rs-json/page-not-found",
-			component: function(resolve, reject) {
-				template(resolve, reject, "404");
-			}
-		},
-		{
 			name: "404",
 			path: "/rs-json/*",
 			component: function(resolve, reject) {
