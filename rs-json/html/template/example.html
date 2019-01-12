@@ -1,0 +1,339 @@
+<div class="container">
+    <div class="row">
+        <div class="col s12">
+            <br />
+        </div>
+        <div class="col s12">
+            <rs-breadcrumb>
+                <rs-breadcrumb-item to="/rs-json" text="Home" />
+                <rs-breadcrumb-item to="/rs-json/example" text="Example" />
+            </rs-breadcrumb>
+        </div>
+        <div class="col s12">
+            <br />
+        </div>
+        <div class="col s12">
+            <p class="flow-text">
+                In order to understand how RS/JSON takes place in your IT, we will create a real-life file. Our business today: a book store.
+            </p>
+        </div>
+        <div class="col s12">
+            <br />
+        </div>
+        <div class="col s12 m10 l8 offset-m1 offset-l2">
+            <div class="center-align">
+                <img class="materialboxed" width="100%" src="/rs-json/img/example-book-store.svg" />
+            </div>
+        </div>
+        <div class="col s12">
+            <br />
+        </div>
+        <div class="col s12">
+            <p class="flow-text">
+                One of the problem with diagrams is that they lack of information. Is the ISBN in norm ISBN-10 or ISBN-13? Does a book must always have an author? ...
+            </p>
+            <p class="flow-text">
+                RS/JSON will be able to tackle those unmodelizable constraints. Let us agree on a couple of statemens first:
+            </p>
+            <ol>
+                <li>A <b>book</b> must have a name and an ISBN (norm ISBN-13)</li>
+                <li>A <b>book</b> must have only one author</li>
+                <li>An <b>Author</b> must have a name and an age (he should be adult)</li>
+                <li>An <b>Author</b> can have many books</li>
+                <li>An <b>Order</b> must have a date of borrowing and returning</li>
+                <li>An <b>Order</b> must have only one book</li>
+            </ol>
+        </div>
+        <div class="col s12">
+            <p class="flow-text">
+                Fair enough, we can move on and create our diagram. Let us start with modelizing books:
+            </p>
+        </div>
+        <div class="col s12">
+            <br />
+        </div>
+        <div class="col s12">
+            <div class="card white">
+                <div class="card-content">
+                    <div class="card-title">
+                        book-store.rs.json
+                    </div>
+                    <pre><code class="language-json">{
+  "version": "0.1.0",
+  "license": "MIT",
+  "charset": "utf8",
+  "schema": {
+    "book": {
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "isbn": {
+          "type": "string"
+        }
+      }
+    }
+  }                
+}</code></pre>
+
+                </div>
+            </div>
+        </div>
+        <div class="col s12">
+            <p class="flow-text">
+                Good start. Remember what we stated on the ISBN?
+            </p>
+        </div>
+        <div class="col s12">
+            <blockquote class="flow-text">
+                <i>[...] and an ISBN (norm <b>ISBN-13</b>)</i>
+            </blockquote>
+        </div>
+        <div class="col s12">
+            <p class="flow-text">This means the ISBN should have a particular form and is checkable (more information on the <a href="https://en.wikipedia.org/wiki/International_Standard_Book_Number#ISBN-13_check_digit_calculation" target="blank">wikipedia page</a>). To sum it up, exactly 17 characters (including dashes), and some control checks. Sounds like guards are the man for the job:</p>
+        </div>
+        <div class="col s12">
+            <div class="card white">
+                <div class="card-content">
+                    <div class="card-title">book-store.rs.json</div>
+                    <pre><code class="language-json">{
+  "version": "0.1.0",
+  "license": "MIT",
+  "charset": "utf8",
+  "schema": {
+    "book": {
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "isbn": {
+          "type": "string",
+          "guards": ["isbn-13"]
+        }
+      }
+    }
+  }                
+}</code></pre>
+                </div>
+            </div>
+        </div>
+        <div class="col s12">
+            <p class="flow-text">
+                This guard is coded in your back-end software. Since it is not part of the <router-link to="/rs-json/documentation/native-guards">native guards</router-link>, you or your collegues will have to code it.
+            </p>
+            <p class="flow-text">Guards are performing application-side, and are great to ensure data coming from your apps are getting clean before being inserted or updated.</p>
+            <p class="flow-text">Guards will also help you configure your property. In the case of <code>isbn-13</code>, since it knows this will be a 17 character string, you will not have to specify any length: it is configured for you.</p>
+            <p class="flow-text"><router-link to="/rs-json/documentation/native-types">Natives types</router-link> will also help you configure your property quicker. For example, <code>string</code> automatically adds a length of 255. All those default values are available on the <router-link to="/rs-json/documentation/native-types">documentation: native types</router-link> section</p>
+            <p class="flow-text">We do not cross books with a name bigger than 128 characters. Let us specify this:</p>
+        </div>
+        <div class="col s12">
+            <div class="card white">
+                <div class="card-content">
+                    <div class="card-title">book-store.rs.json</div>
+                    <pre><code class="language-json">{
+  "version": "0.1.0",
+  "license": "MIT",
+  "charset": "utf8",
+  "schema": {
+    "book": {
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string",
+          "length": 128,
+        },
+        "isbn": {
+          "type": "string",
+          "guards": ["isbn-13"]
+        }
+      }
+    }
+  }                
+}</code></pre>
+                </div>
+            </div>
+        </div>
+        <div class="col s12">
+            <p class="flow-text">
+                Good job. One more thing to take into account:
+            </p>
+            <blockquote class="flow-text">
+                <i>A book <b>must</b> have a name and an ISBN</i>
+            </blockquote>
+            <p class="flow-text">
+                Using RS/JSON, this is something very explicit:
+            </p>
+        </div>
+        <div class="col s12">
+            <div class="card white">
+                <div class="card-content">
+                    <div class="card-title">book-store.rs.json</div>
+                    <pre><code class="language-json">{
+  "version": "0.1.0",
+  "license": "MIT",
+  "charset": "utf8",
+  "schema": {
+    "book": {
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string",
+          "length": 128,
+          "required": true
+        },
+        "isbn": {
+          "type": "string",
+          "required": true,
+          "guards": ["isbn-13"]
+        }
+      }
+    }
+  }                
+}</code></pre>
+                </div>
+            </div>
+        </div>
+        <div class="col s12">
+            <p class="flow-text">We often use an integer as an identifier in our app for each of our records. Let us specify the <code>id</code> property is our primary key:</p>
+        </div>
+        <div class="col s12">
+            <div class="card white">
+                <div class="card-content">
+                    <div class="card-title">book-store.rs.json</div>
+                    <pre><code class="language-json">{
+    "version": "0.1.0",
+    "license": "MIT",
+    "charset": "utf8",
+    "schema": {
+        "book": {
+            "identifier": ["id"],
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string",
+                    "length": 128,
+                    "required": true
+                },
+                "isbn": {
+                    "type": "string",
+                    "required": true,
+                    "guards": ["isbn-13"]
+                }
+            }
+        }
+    }                
+}</code></pre>
+                </div>
+            </div>
+        </div>
+        <div class="col s12">
+            <p class="flow-text">
+                Since this is an integer, we can let the database incrementing the property <code>id</code> for us. Let us make the database aware of this:
+            </p>
+        </div>
+        <div class="col s12">
+            <div class="card white">
+                <div class="card-content">
+                    <div class="card-title">book-store.rs.json</div>
+                    <pre><code class="language-json">{
+    "version": "0.1.0",
+    "license": "MIT",
+    "charset": "utf8",
+    "schema": {
+        "book": {
+            "identifier": ["id"],
+            "properties": {
+                "id": {
+                    "type": "integer",
+                    "incremented": true
+                },
+                "name": {
+                    "type": "string",
+                    "length": 128,
+                    "required": true
+                },
+                "isbn": {
+                    "type": "string",
+                    "required": true,
+                    "guards": ["isbn-13"]
+                }
+            }
+        }
+    }                
+}</code></pre>
+                </div>
+            </div>
+        </div>
+        <div class="col s12">
+            <p class="flow-text">
+                This begins to look great. One last thing for our book, the author.
+            </p>
+            <blockquote class="flow-text">
+                A book <b>must</b> have <b>only one</b> author
+            </blockquote>
+            <p class="flow-text">
+                Here is how you would specify such a relation:
+            </p>
+        </div>
+        <div class="col s12">
+            <div class="card white">
+                <div class="card-content">
+                    <div class="card-title">book-store.rs.json</div>
+                    <pre><code class="language-json">{
+    "version": "0.1.0",
+    "license": "MIT",
+    "charset": "utf8",
+    "schema": {
+        "book": {
+            "identifier": ["id"],
+            "properties": {
+                "id": {
+                    "type": "integer",
+                    "incremented": true
+                },
+                "name": {
+                    "type": "string",
+                    "length": 128,
+                    "required": true
+                },
+                "isbn": {
+                    "type": "string",
+                    "required": true,
+                    "guards": ["isbn-13"]
+                },
+                "author": {
+                    "type": "relation",
+                    "minimum": 1,
+                    "maximum": 1
+                }
+            }
+        }
+    }                
+}</code></pre>
+                </div>
+            </div>
+        </div>
+        <div class="col s12">
+            <p class="flow-text">
+                Here is what happens:
+            </p>
+            <ol>
+                <li>The property name is only used by your ORM.</li>
+                <li>The reference for the foreign key is automatically figured out using a standard notation: name of the relation + "_id", so it will correctly understand you are talking about <code>author_id</code></li>
+                <li>The foreign column is by default <code>id</code>, and the foreign table is by default the name of the relation, so it correctly understands that you are referencing <code>author(id)</code></li>
+            </ol>
+        </div>
+    </div>
+</div>

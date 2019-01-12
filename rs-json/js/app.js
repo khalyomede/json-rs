@@ -19,6 +19,32 @@ const router = new VueRouter({
 			}
 		},
 		{
+			name: "documentation",
+			path: "/rs-json/documentation",
+			component: function(resolve, reject) {
+				template(resolve, reject, "documentation");
+			}
+		},
+		{
+			name: "example",
+			path: "/rs-json/example",
+			component: function(resolve, reject) {
+				template(resolve, reject, "example", {
+					mounted: function() {
+						M.AutoInit();
+						Prism.highlightAll();
+					}
+				});
+			}
+		},
+		{
+			name: "page-not-found",
+			path: "/rs-json/page-not-found",
+			component: function(resolve, reject) {
+				template(resolve, reject, "404");
+			}
+		},
+		{
 			name: "404",
 			path: "/rs-json/*",
 			component: function(resolve, reject) {
