@@ -30,7 +30,7 @@
         </div>
         <div class="col s12">
             <p class="flow-text">
-                One of the problem with diagrams is that they lack of information. Is the ISBN in norm ISBN-10 or ISBN-13? Does a book must always have an author? ...
+                One of the problem with diagrams is that they lack of information. Is the ISBN in norm ISBN-10 or ISBN-13? Does the return date can be before the borrowed date? ...
             </p>
             <p class="flow-text">
                 RS/JSON will be able to tackle those unmodelizable constraints. Let us agree on a couple of statemens first:
@@ -128,9 +128,7 @@
                 This guard is coded in your back-end software. Since it is not part of the <router-link to="/rs-json/documentation/native-guards">native guards</router-link>, you or your collegues will have to code it.
             </p>
             <p class="flow-text">Guards are performing application-side, and are great to ensure data coming from your apps are getting clean before being inserted or updated.</p>
-            <p class="flow-text">Guards will also help you configure your property. In the case of <code>isbn-13</code>, since it knows this will be a 17 character string, you will not have to specify any length: it is configured for you.</p>
-            <p class="flow-text"><router-link to="/rs-json/documentation/native-types">Natives types</router-link> will also help you configure your property quicker. For example, <code>string</code> automatically adds a length of 255. All those default values are available on the <router-link to="/rs-json/documentation/native-types">documentation: native types</router-link> section</p>
-            <p class="flow-text">We do not cross books with a name bigger than 128 characters. Let us specify this:</p>
+            <p class="flow-text">Now, we could also inform the database that our isbn is a 17 long character, using the <code>lenght</code> key on this property. Or we could use a <router-link to="/rs-json/documentation/custom-types">custom type</router-link> to factorize all those parameters.</p>
         </div>
         <div class="col s12">
             <div class="card white">
@@ -147,12 +145,10 @@
           "type": "integer"
         },
         "name": {
-          "type": "string",
-          "length": 128,
+          "type": "string"
         },
         "isbn": {
-          "type": "string",
-          "guards": ["isbn-13"]
+          "type": "isbn-13"
         }
       }
     }
@@ -162,6 +158,9 @@
             </div>
         </div>
         <div class="col s12">
+            <p class="flow-text">
+              This includes: <code>"length": 17</code>, <code>"guards": ["isbn-13"]</code>, <code>"type": "string"</code>. Sometimes you better make a custom type if you feel the property is getting too much parameters or you want to reuse a set of parameters.
+            </p>
             <p class="flow-text">
                 Good job. One more thing to take into account:
             </p>
@@ -192,9 +191,8 @@
           "required": true
         },
         "isbn": {
-          "type": "string",
-          "required": true,
-          "guards": ["isbn-13"]
+          "type": "isbn-13",
+          "required": true
         }
       }
     }
@@ -227,9 +225,8 @@
           "required": true
         },
         "isbn": {
-          "type": "string",
-          "required": true,
-          "guards": ["isbn-13"]
+          "type": "isbn-13",
+          "required": true
         }
       }
     }
@@ -265,9 +262,8 @@
           "required": true
         },
         "isbn": {
-          "type": "string",
-          "required": true,
-          "guards": ["isbn-13"]
+          "type": "isbn-13",
+          "required": true
         }
       }
     }
@@ -309,9 +305,8 @@
           "required": true
         },
         "isbn": {
-          "type": "string",
-          "required": true,
-          "guards": ["isbn-13"]
+          "type": "isbn-13",
+          "required": true
         },
         "author": {
           "type": "relation",
@@ -361,9 +356,9 @@
           "guards": ["filled"]
         },
         "isbn": {
-          "type": "string",
+          "type": "isbn-13",
           "required": true,
-          "guards": ["filled", "isbn-13"]
+          "guards": ["filled"]
         },
         "author": {
           "type": "relation",
@@ -379,7 +374,10 @@
       </div>
       <div class="col s12">
         <p class="flow-text">
-          We successfuly followed our statements. One last improvements would be to make the isbn unique. With RS/JSON here is how you would do that:
+          Also, if you remember, the <code>"type": "isbn-13"</code> also contains a guard, <code>"guards": ["isbn-13"]</code> inside of it. It will be appended to the guards you choose, so in reality the isbn will have 2 guards: <code>"guards": ["isbn-13", "filled"]</code>.
+        </p>
+        <p class="flow-text">
+          One last improvements would be to make the isbn unique. With RS/JSON here is how you would do that:
         </p>
       </div>
       <div class="col s12">
@@ -408,9 +406,9 @@
         "guards": ["filled"]
       },
       "isbn": {
-        "type": "string",
+        "type": "isbn-13",
         "required": true,
-        "guards": ["filled", "isbn-13"]
+        "guards": ["filled"]
       },
       "author": {
         "type": "relation",
@@ -460,9 +458,9 @@
         "guards": ["filled"]
       },
       "isbn": {
-        "type": "string",
+        "type": "isbn-13",
         "required": true,
-        "guards": ["filled", "isbn-13"]
+        "guards": ["filled"]
       },
       "author": {
         "type": "relation",
@@ -533,9 +531,9 @@
           "guards": ["filled"]
         },
         "isbn": {
-          "type": "string",
+          "type": "isbn-13",
           "required": true,
-          "guards": ["filled", "isbn-13"]
+          "guards": ["filled"]
         },
         "author": {
           "type": "relation",
@@ -618,9 +616,9 @@
           "guards": ["filled"]
         },
         "isbn": {
-          "type": "string",
+          "type": "isbn-13",
           "required": true,
-          "guards": ["filled", "isbn-13"]
+          "guards": ["filled"]
         },
         "author": {
           "type": "relation",
@@ -725,9 +723,9 @@
           "guards": ["filled"]
         },
         "isbn": {
-          "type": "string",
+          "type": "isbn-13",
           "required": true,
-          "guards": ["filled", "isbn-13"]
+          "guards": ["filled"]
         },
         "author": {
           "type": "relation",
