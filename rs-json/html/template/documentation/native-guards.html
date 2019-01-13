@@ -1,0 +1,48 @@
+<div class="container">
+	<div class="row">
+        <div class="col s12"><br /></div>
+        <div class="col s12"><br /></div>
+        <div class="col s12">
+            <rs-breadcrumb>
+                <rs-breadcrumb-item to="/rs-json" text="Home" />
+                <rs-breadcrumb-item to="/rs-json/documentation" text="Documentation" />
+                <rs-breadcrumb-item to="/rs-json/documentation/native-guards" text="Native guards" />
+            </rs-breadcrumb>
+        </div>
+        <div class="col s12"><br /></div>
+		<div class="col s12">
+			<p class="flow-text">
+				Native guards are tools already available for you. Every library
+				implementing RS/JSON ship those in order to help you being up
+				and runing fast.
+            </p>
+            <p class="flow-text">Below is the list of native guards, with a description of their behavior.</p>
+        </div>
+        <div class="col s12">
+            <div class="card white">
+                <div class="card-content">
+                    <div class="card-title">Native guards list</div>
+                    <table class="highlight responsive-table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>code</th>
+                                <th>Validation</th>
+                                <th>Apply to</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Check the file "/rs-json/js/app.js" to see the list of guards in the "gh-pages" branch -->
+                            <tr v-for="guard in guards" :key="guard.id">
+                                <td class="no-return">{{ guard.title }}</td>
+                                <td class="bold no-return">{{ guard.code }}</td>
+                                <td>{{ guard.description }}</td>
+                                <td>{{ guard.applyTo.join(', ') }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+	</div>
+</div>
