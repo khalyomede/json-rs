@@ -107,6 +107,21 @@ const router = new VueRouter({
 								},
 								{
 									id: 6,
+									title: "Different than",
+									applyTo: [
+										"string",
+										"integer",
+										"float",
+										"date",
+										"time",
+										"datetime"
+									],
+									code: "different-than:label",
+									description:
+										"Fails if the property is equal to another property"
+								},
+								{
+									id: 7,
 									title: "Email",
 									applyTo: ["string"],
 									code: "email",
@@ -114,7 +129,7 @@ const router = new VueRouter({
 										"Fails if the string is not an email."
 								},
 								{
-									id: 7,
+									id: 8,
 									title: "URL",
 									applyTo: ["string"],
 									code: "url",
@@ -122,7 +137,7 @@ const router = new VueRouter({
 										"Fails if the string is not a valid URL."
 								},
 								{
-									id: 8,
+									id: 9,
 									title: "domain",
 									applyTo: ["string"],
 									code: "domain",
@@ -130,7 +145,7 @@ const router = new VueRouter({
 										"Fails if the string is not a valid internet domain."
 								},
 								{
-									id: 9,
+									id: 10,
 									title: "ip",
 									applyTo: ["string"],
 									code: "ip",
@@ -138,7 +153,7 @@ const router = new VueRouter({
 										"Fails if the string is not a valid IP."
 								},
 								{
-									id: 10,
+									id: 11,
 									title: "Regular expression",
 									applyTo: ["string"],
 									code: "regexp:[a-z]",
@@ -146,7 +161,7 @@ const router = new VueRouter({
 										"Fails if the string does not match the regular expression."
 								},
 								{
-									id: 11,
+									id: 12,
 									title: "Starts with",
 									applyTo: ["string", "integer", "float"],
 									code: "start:test@",
@@ -154,7 +169,7 @@ const router = new VueRouter({
 										"Fails if the property does not starts with the parameter."
 								},
 								{
-									id: 12,
+									id: 13,
 									title: "Ends with",
 									applyTo: ["string", "integer", "float"],
 									code: "end:@gmail.com",
@@ -162,12 +177,20 @@ const router = new VueRouter({
 										"Fails if the property does not ends with the parameter"
 								},
 								{
-									id: 13,
+									id: 14,
 									title: "Contains",
 									applyTo: ["string"],
 									code: "contain:gmail",
 									description:
 										"Fails if the string does not contain the parameter."
+								},
+								{
+									id: 15,
+									title: "Timezone",
+									applyTo: ["string"],
+									code: "timezone",
+									description:
+										"Fails if the string is not a valid timezone."
 								}
 							]
 						};
@@ -209,8 +232,6 @@ const vue = new Vue({
 });
 
 router.beforeEach(function(to, from, next) {
-	console.log("to", to);
-
 	vue.loading = true;
 
 	next();
