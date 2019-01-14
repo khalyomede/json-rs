@@ -199,6 +199,18 @@ const router = new VueRouter({
 			}
 		},
 		{
+			name: "documentation-custom-guards",
+			path: "/rs-json/documentation/custom-guards",
+			component: function(resolve, reject) {
+				template(resolve, reject, "documentation/custom-guards", {
+					mounted: function() {
+						M.AutoInit();
+						Prism.highlightAll();
+					}
+				});
+			}
+		},
+		{
 			name: "example",
 			path: "/rs-json/example",
 			component: function(resolve, reject) {
