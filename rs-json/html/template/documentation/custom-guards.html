@@ -48,8 +48,8 @@ if (!RsJson.hasGuard('longitude')) {
                         <pre><code class="language-python">
 from rsjson import RsJson
 
-if not RsJson.hasGuard('longitude'):
-  RsJson.addGuard('longitude', lambda value: -180 <= value and value <= 180)
+if not RsJson.has_guard('longitude'):
+  RsJson.add_guard('longitude', lambda value: -180 <= value and value <= 180)
 </code></pre>
                     </div>
                     <div id="simple-guard-your-language">If you whish to feature your implementation in your language, please make an issue. Thank you.</div>
@@ -82,8 +82,12 @@ if(!RsJson::hasGuard('before')) {
       throw new InvalidArgumentException('guard "before" expects a parameter');
     }
 
-    if (!in_array($parameters, $properties)) {
-      throw new InvalidArgumentException("missing property $parameters on model {property->model}");
+    $propertiesNames = array_map(function($property) {
+        return $property->name;
+    }, $properties);
+
+    if (!in_array($parameters, $propertiesNames)) {
+      throw new InvalidArgumentException("missing property $parameters on model {$property->model}");
     }
 
     return (new DateTime($value)) < (new DateTime($properties[$parameters]->value));
@@ -97,7 +101,17 @@ const RsJson = require('rs-json');
 // import * as RsJson from 'rs-json';
 
 if (!RsJson.hasGuard('before')) {
-  RsJson.addGuard('before', (value, parameters, property, properties) => new Date(value) < new Date(properties[parameters].value));
+  RsJson.addGuard('before', (value, parameters, property, properties) => {
+    if(!parameters) {
+      throw new Error('guard "before" expects a parameter');
+    }
+
+    if(!properties.map(property => property.name).includes(parameters)) {
+        throw new Error(`missing property ${parameters} on model ${property.model}`)
+    }
+
+    new Date(value) < new Date(properties[parameters].value));
+  }
 }
 </code></pre>
                     </div>
@@ -106,10 +120,10 @@ if (!RsJson.hasGuard('before')) {
 from rsjson import RsJson
 from dateutil.parser import parse
 
-if not RsJson.hasGuard('before'):
-  RsJson.addGuard('before', lambda value, parameters, prop, props: parse(value) < parse(props[parameters].value))
+if not RsJson.has_guard('before'):
+  RsJson.add_guard('before', lambda value, parameters, prop, props: parse(value) < parse(props[parameters].value))
 </code></pre>
-                    </div>
+                    _</div>
                     <div id="complex-guard-your-language">If you whish to feature your implementation in your language, please make an issue. Thank you.</div>
                 </div>
             </div>
