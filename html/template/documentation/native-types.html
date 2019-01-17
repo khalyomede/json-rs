@@ -1,0 +1,93 @@
+<div class="container">
+    <div class="row">
+        <div class="col s12">
+            <br />
+        </div>
+        <div class="col s12">
+            <rs-breadcrumb>
+                <rs-breadcrumb-item to="/rs-json" text="Home" />
+                <rs-breadcrumb-item to="/rs-json/documentation" text="Documentation" />
+                <rs-breadcrumb-item to="/rs-json/documentation/native-types" text="Native types" />
+            </rs-breadcrumb>
+        </div>
+        <div class="col s12">
+            <p class="flow-text">RS/JSON supports the following basic types:</p>
+        </div>
+        <div class="col s12 l6 offset-l3">
+            <div class="card white">
+                <div class="card-content">
+                    <table class="responsive-table highlight">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Code</th>
+                                <th class="right-align">Minimum</th>
+                                <th class="right-align">Maximum</th>
+                                <th class="right-align">Precision</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Float</td>
+                                <td><code>float</code></td>
+                                <td class="right-align">-max</td>
+                                <td class="right-align">max</td>
+                                <td class="right-align">max</td>
+                            </tr>
+                            <tr>
+                                <td colspan="5"><br></td>
+                            </tr>
+                            <tr>
+                                <td>String</td>
+                                <td><code>string</code></td>
+                                <td class="right-align">-max</td>
+                                <td class="right-align">max</td>
+                                <td class="right-align"></td>
+                            </tr>
+                            <tr>
+                                <td colspan="5"><br></td>
+                            </tr>
+                            <tr>
+                                <td>Boolean</td>
+                                <td><code>boolean</code></td>
+                                <td class="right-align">0</td>
+                                <td class="right-align">1</td>
+                                <td class="right-align"></td>
+                            </tr>
+                            <tr>
+                                <td colspan="5"><br></td>
+                            </tr>
+                            <tr>
+                                <td>Date</td>
+                                <td><code>date</code></td>
+                                <td class="right-align"></td>
+                                <td class="right-align"></td>
+                                <td class="right-align"></td>
+                            </tr>
+                            <tr>
+                                <td>Time</td>
+                                <td><code>time</code></td>
+                                <td class="right-align"></td>
+                                <td class="right-align"></td>
+                                <td class="right-align"></td>
+                            </tr>
+                            <tr>
+                                <td>Date time</td>
+                                <td><code>date-time</code></td>
+                                <td class="right-align"></td>
+                                <td class="right-align"></td>
+                                <td class="right-align"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col s12">
+            <p class="flow-text">
+                Value list, like <code>enum()</code> or <code>set()</code> are not in RS/JSON native types because it is not a clean and maintainable solution for a set of values.
+            </p>
+            <p class="flow-text">We prefer using a proper model with a primary key and a name field, and using this key to link your records to.</p>
+        </div>
+    </div>
+</div>

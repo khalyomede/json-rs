@@ -211,6 +211,39 @@ const router = new VueRouter({
 			}
 		},
 		{
+			name: "documentation-types",
+			path: "/rs-json/documentation/types",
+			component: function(resolve, reject) {
+				template(resolve, reject, "documentation/types", {
+					mounted: function() {
+						Prism.highlightAll();
+					}
+				});
+			}
+		},
+		{
+			name: "documentation-native-types",
+			path: "/rs-json/documentation/native-types",
+			component: function(resolve, reject) {
+				template(resolve, reject, "documentation/native-types", {
+					mounted: function() {
+						M.AutoInit();
+					}
+				});
+			}
+		},
+		{
+			name: "documentation-custom-types",
+			path: "/rs-json/documentation/custom-types",
+			component: function(resolve, reject) {
+				template(resolve, reject, "documentation/custom-types", {
+					mounted: function() {
+						Prism.highlightAll();
+					}
+				});
+			}
+		},
+		{
 			name: "example",
 			path: "/rs-json/example",
 			component: function(resolve, reject) {

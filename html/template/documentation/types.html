@@ -1,0 +1,99 @@
+<div class="container">
+    <div class="row">
+        <div class="col s12">
+            <br />
+        </div>
+        <div class="col s12">
+            <rs-breadcrumb>
+                <rs-breadcrumb-item to="/rs-json" text="Home" />
+                <rs-breadcrumb-item to="/rs-json/documentation" text="Documentation" />
+                <rs-breadcrumb-item to="/rs-json/documentation/types" text="Types" />
+            </rs-breadcrumb>
+        </div>
+        <div class="col s12"><br></div>
+        <div class="col s12 m8 l6 offset-m2 offset-l3">
+            <div class="collection">
+                <rs-collection-item to="/rs-json/documentation/native-types" text="Native types" />
+                <rs-collection-item to="/rs-json/documentation/custom-types" text="Custom types" />
+            </div>
+        </div>
+        <div class="col s12">
+            <p class="flow-text">Types define how you data is stored. RS/JSON provides <router-link to="/rs-json/documentation/native-types">natives types</router-link> to help you kickstart your schema.</p>
+        </div>
+        <div class="col s12 m8 l6 offset-m2 offset-l3">
+            <div class="card white">
+                <div class="card-content">
+                    <div class="card-title">example.rs.json</div>
+                    <pre><code class="language-json">{
+  "version": "0.1.0",
+  "license" : "MIT",
+  "charset": "utf8",
+  "schema": {
+    "book": {
+      "properties": {
+        "name": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}</code></pre>
+                </div>
+            </div>
+        </div>
+        <div class="col s12">
+            <p class="flow-text">Unless guards, types can actually alter other properties. This make those very powerful to abstract some business logic.</p>
+            <p class="flow-text">For example, instead of writing this:</p>
+        </div>
+        <div class="col s12 m8 l6 offset-m2 offset-l3">
+            <div class="card white">
+                <div class="card-content">
+                    <div class="card-title">example.rs.json</div>
+                    <pre><code class="language-json">{
+  "version": "0.1.0",
+  "license": "MIT",
+  "charset": "utf8",
+  "schema": {
+    "position": {
+      "properties": {
+        "longitude": {
+          "type": "float",
+          "precision": 8,
+          "guards": ["min:-180", "max:180"]
+        }
+      }
+    }
+  }
+}</code></pre>
+                </div>
+            </div>
+        </div>
+        <div class="col s12">
+            <p class="flow-text">You can write this:</p>
+        </div>
+        <div class="col s12 m8 l6 offset-m2 offset-l3">
+            <div class="card white">
+                <div class="card-content">
+                    <div class="card-title">example.rs.json</div>
+                    <pre><code class="language-json">{
+  "version": "0.1.0",
+  "license": "MIT",
+  "charset": "utf8",
+  "schema": {
+    "position": {
+      "properties": {
+        "longitude": {
+          "type": "longitude"
+        }
+      }
+    }
+  }
+}</code></pre>
+                </div>
+            </div>
+        </div>
+        <div class="col s12">
+            <p class="flow-text">Types like this are not native, but <router-link to="/rs-json/documentation/custom-types">custom types</router-link>. They are good if you want to reduce repetition.</p>
+        </div>
+    </div>
+</div>

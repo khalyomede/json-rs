@@ -14,7 +14,7 @@
 					<pre><code class="language-json">{
   "version": "0.1.0",
   "license": "MIT",
-  "charset": "utf8-mb4",
+  "charset": "utf8",
   "schema": {
     "book": {
       "identifier": ["id"],
@@ -27,7 +27,7 @@
           "incremented": true
         },
         "name": {
-          "type": "small-string",
+          "type": "string",
           "required": true,
           "guards": ["filled"]
         }

@@ -1,0 +1,76 @@
+<div class="container">
+	<div class="row">
+        <div class="col s12"><br /></div>
+        <div class="col s12">
+            <rs-breadcrumb>
+                <rs-breadcrumb-item to="/rs-json" text="Home" />
+                <rs-breadcrumb-item to="/rs-json/documentation" text="Documentation" />
+                <rs-breadcrumb-item to="/rs-json/documentation/custom-types" text="Custom types" />
+            </rs-breadcrumb>
+        </div>
+        <div class="col s12"><br /></div>
+		<div class="col s12">
+			<p class="flow-text">
+				Custom types extend from
+				<router-link to="/rs-json/documentation/native-types"
+					>native types</router-link
+				>
+				to abstract some logics. They take a very good place when it
+				comes to scale and improve maintenance.
+			</p>
+			<p class="flow-text">
+				However, this is at you, developer, to either import them from
+				the community or create them in order to use some.
+			</p>
+			<p class="flow-text">
+				Here is an example that shows how to create a custom type:
+				<code>longitude</code>.
+			</p>
+		</div>
+		<div class="col s12">
+			<div class="card white">
+				<div class="card-tabs">
+					<ul class="tabs tabs-fixed-width">
+						<li class="tab">
+							<a href="#custom-type-longitude-php" class="active"
+								>PHP</a
+							>
+						</li>
+						<li class="tab">
+							<a href="#custom-type-longitude-node">Node</a>
+						</li>
+					</ul>
+				</div>
+				<div class="card-content grey lighten-4">
+					<div id="custom-type-longitude-php">
+						<pre><code class="language-PHP">
+use RsJson\RsJson;
+use RsJson\Property;
+
+if (!RsJson::hasType('longitude')) {
+  RsJson::addType('longitude', function(Property $property): void {
+    $property->type = 'float';
+    $property->precision = 8;
+    $property->guards = ['min:-180', 'max:180'];
+  });
+}
+        </code></pre>
+					</div>
+					<div id="custom-type-longitude-node">
+						<pre><code class="language-javascript">
+const RsJson = require('rs-json');
+// import * as RsJson from 'rs-json';
+
+if(!RsJson.hasType('longitude')) {
+  RsJson.addType('longitude', property => {
+    property.type = 'float';
+    property.precision = 8;
+    property.guards = ['min:-180', 'max:180'];
+  });
+}</code></pre>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

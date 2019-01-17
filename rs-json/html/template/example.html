@@ -14,7 +14,7 @@
         </div>
         <div class="col s12">
             <p class="flow-text">
-                In order to understand how RS/JSON takes place in your IT, we will create a real-life file. Our business today: a book store.
+                In order to understand how RS/JSON takes place in your IT, we will take inspiration from a real life example. Our business today: a book store.
             </p>
         </div>
         <div class="col s12">
@@ -30,7 +30,7 @@
         </div>
         <div class="col s12">
             <p class="flow-text">
-                One of the problem with diagrams is that they lack of information. Is the ISBN in norm ISBN-10 or ISBN-13? Does the return date can be before the borrowed date? ...
+                One of the problem with diagrams is that they lack of information. Is the ISBN in norm ISBN-10 or ISBN-13? Does the return date can have a value lower than the borrowed date?
             </p>
             <p class="flow-text">
                 RS/JSON will be able to tackle those unmodelizable constraints. Let us agree on a couple of statemens first:
@@ -52,7 +52,7 @@
         <div class="col s12">
             <br />
         </div>
-        <div class="col s12">
+        <div class="col s12 m10 l8 offset-m1 offset-l2">
             <div class="card white">
                 <div class="card-content">
                     <div class="card-title">
@@ -95,7 +95,7 @@
         <div class="col s12">
             <p class="flow-text">This means the ISBN should have a particular form and is checkable (more information on the <a href="https://en.wikipedia.org/wiki/International_Standard_Book_Number#ISBN-13_check_digit_calculation" target="blank">wikipedia page</a>). To sum it up, exactly 17 characters (including dashes), and some control checks. Sounds like guards are the man for the job:</p>
         </div>
-        <div class="col s12">
+        <div class="col s12 m10 l8 offset-m1 offset-l2">
             <div class="card white">
                 <div class="card-content">
                     <div class="card-title">book-store.rs.json</div>
@@ -128,9 +128,9 @@
                 This guard is coded in your back-end software. Since it is not part of the <router-link to="/rs-json/documentation/native-guards">native guards</router-link>, you or your collegues will have to code it.
             </p>
             <p class="flow-text">Guards are performing application-side, and are great to ensure data coming from your apps are getting clean before being inserted or updated.</p>
-            <p class="flow-text">Now, we could also inform the database that our isbn is a 17 long character, using the <code>lenght</code> key on this property. Or we could use a <router-link to="/rs-json/documentation/custom-types">custom type</router-link> to factorize all those parameters.</p>
+            <p class="flow-text">Now, we could also inform the database that our isbn has a maximum length of 17 character, using the <code>lenght</code> key on this property. Or we could use a <router-link to="/rs-json/documentation/custom-types">custom type</router-link> to factorize all those parameters.</p>
         </div>
-        <div class="col s12">
+        <div class="col s12 m10 l8 offset-m1 offset-l2">
             <div class="card white">
                 <div class="card-content">
                     <div class="card-title">book-store.rs.json</div>
@@ -171,7 +171,7 @@
                 Using RS/JSON, this is something very explicit:
             </p>
         </div>
-        <div class="col s12">
+        <div class="col s12 m10 l8 offset-m1 offset-l2">
             <div class="card white">
                 <div class="card-content">
                     <div class="card-title">book-store.rs.json</div>
@@ -203,7 +203,7 @@
         <div class="col s12">
             <p class="flow-text">We often use an integer as an identifier in our app for each of our records. Let us specify the <code>id</code> property is our primary key:</p>
         </div>
-        <div class="col s12">
+        <div class="col s12 m10 l8 offset-m1 offset-l2">
             <div class="card white">
                 <div class="card-content">
                     <div class="card-title">book-store.rs.json</div>
@@ -238,7 +238,7 @@
                 Since this is an integer, we can let the database incrementing the property <code>id</code> for us. Let us make the database aware of this:
             </p>
         </div>
-        <div class="col s12">
+        <div class="col s12 m10 l8 offset-m1 offset-l2">
             <div class="card white">
                 <div class="card-content">
                     <div class="card-title">book-store.rs.json</div>
@@ -280,7 +280,7 @@
                 Here is how you would specify such a relation:
             </p>
         </div>
-        <div class="col s12">
+        <div class="col s12 m10 l8 offset-m1 offset-l2">
             <div class="card white">
                 <div class="card-content">
                     <div class="card-title">book-store.rs.json</div>
@@ -329,7 +329,7 @@
                 In SQL, you can tell a column to not be null, but you cannot enforce a string column to be not empty. If you would like to achieve this, you can use a <router-link to="/rs-json/documentation/native-guards">native guard</router-link> called <code>filled</code>. Let us make our name and isbn mandatory to finish with our book table:
             </p>
         </div>
-        <div class="col s12">
+        <div class="col s12 m10 l8 offset-m1 offset-l2">
           <div class="card white">
               <div class="card-content">
                   <div class="card-title">book-store.rs.json</div>
@@ -375,7 +375,7 @@
           One last improvements would be to make the isbn unique. With RS/JSON here is how you would do that:
         </p>
       </div>
-      <div class="col s12">
+      <div class="col s12 m10 l8 offset-m1 offset-l2">
         <div class="card white">
             <div class="card-content">
                 <div class="card-title">book-store.rs.json</div>
@@ -425,7 +425,7 @@
           In order to make this schema, we should add the missing author model.
         </p>
       </div>
-      <div class="col s12">
+      <div class="col s12 m10 l8 offset-m1 offset-l2">
         <div class="card white">
             <div class="card-content">
                 <div class="card-title">book-store.rs.json</div>
@@ -496,7 +496,7 @@
           The schema will run correctly, but we could also add the inverse of the book->author relation.
         </p>
       </div>
-      <div class="col s12">
+      <div class="col s12 m10 l8 offset-m1 offset-l2">
         <div class="card white">
             <div class="card-content">
                 <div class="card-title">book-store.rs.json</div>
@@ -580,7 +580,7 @@
         </p>
         <p class="flow-text">To finish, let us add the order model.</p>
       </div>
-      <div class="col s12">
+      <div class="col s12 m10 l8 offset-m1 offset-l2">
         <div class="card white">
             <div class="card-content">
                 <div class="card-title">book-store.rs.json</div>
@@ -686,7 +686,7 @@
           For the one having worked with relational schema for database, this might make you think of "many to many" relationship, and this is exactly the case for books and orders. Here is how to conceptualize it using RS/JSON.
         </p>
       </div>
-      <div class="col s12">
+      <div class="col s12 m10 l8 offset-m1 offset-l2">
         <div class="card white">
             <div class="card-content">
                 <div class="card-title">book-store.rs.json</div>
