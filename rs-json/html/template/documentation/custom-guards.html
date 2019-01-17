@@ -65,7 +65,7 @@ if not RsJson.has_guard('longitude'):
                     <ul class="tabs tabs-fixed-width">
                     <li class="tab"><a href="#complex-guard-php" class="active">PHP</a></li>
                     <li class="tab"><a href="#complex-guard-javascript">Node</a></li>
-                    <li class="tab"><a href="#complex-guard-python">Python</a></li>
+                    <li class="tab"><a href="#complex-guard-python">Python 3</a></li>
                     <li class="tab"><a href="#complex-guard-your-language">Your language</a></li>
                     </ul>
                 </div>
@@ -110,8 +110,8 @@ if (!RsJson.hasGuard('before')) {
         throw new Error(`missing property ${parameters} on model ${property.model}`)
     }
 
-    new Date(value) < new Date(properties[parameters].value));
-  }
+    return new Date(value) < new Date(properties[parameters].value)
+  });
 }
 </code></pre>
                     </div>
