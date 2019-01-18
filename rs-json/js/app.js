@@ -244,13 +244,26 @@ const router = new VueRouter({
 			}
 		},
 		{
+			name: "documentation-charsets",
+			path: "/rs-json/documentation/charsets",
+			component: function(resolve, reject) {
+				template(resolve, reject, "documentation/charsets");
+			}
+		},
+		{
+			name: "documentation-api",
+			path: "/rs-json/documentation/api",
+			component: function(resolve, reject) {
+				template(resolve, reject, "documentation/api");
+			}
+		},
+		{
 			name: "example",
 			path: "/rs-json/example",
 			component: function(resolve, reject) {
 				template(resolve, reject, "example", {
 					mounted: function() {
 						M.AutoInit();
-						Prism.highlightAll();
 					}
 				});
 			}
