@@ -1,0 +1,85 @@
+<rs-container>
+    <rs-spacer />
+    <div class="col s12">
+        <rs-breadcrumb>
+            <rs-breadcrumb-item to="/rs-json" text="Home" />
+            <rs-breadcrumb-item to="/rs-json/documentation" text="Documentation" />
+            <rs-breadcrumb-item to="/rs-json/documentation/charsets" text="Charsets" />
+        </rs-breadcrumb>
+    </div>
+    <div class="col s12">
+        <rs-paragraph>
+            RS/JSON supports a list of charsets in order to unify every variants on the plaform RS/JSON will be installed.
+        </rs-paragraph>
+    </div>
+    <div class="col s12 m4 l3 offset-m4 offset-l4">
+        <rs-card>
+            <div slot="content">
+                <table class="highlight">
+                    <thead>
+                        <tr>
+                            <th class="center-align">Name</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="center-align">utf8</td></tr>
+                        <tr>
+                            <td class="center-align">utf8mb4</td>
+                        </tr>
+                        <tr>
+                            <td class="center-align">iso88591</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>            
+        </rs-card>
+    </div>
+    <div class="col s12">
+        <rs-paragraph>
+            Charsets can be set globally:
+        </rs-paragraph>
+    </div>
+    <div class="col s12 m8 l6 offset-m2 offset-l3">
+        <rs-card>
+            <div slot="content">
+                <rs-code lang="json">{
+  "version": "0.1.0",
+  "license" : "MIT",
+  "charset": "utf8",
+  "schema": {}
+}</rs-code>
+            </div>
+        </rs-card>
+    </div>
+    <div class="col s12">
+        <rs-paragraph>
+            Or per property:
+        </rs-paragraph>
+    </div>
+    <div class="col s12 m8 l6 offset-m2 offset-l3">
+        <rs-card>
+            <div slot="content">
+                <rs-code lang="json">{
+  "version": "0.1.0",
+  "license": "MIT",
+  "charset": "utf8",
+  "schema": {
+    "book": {
+      "properties": {
+        "name": {
+          "type": "string",
+          "charset": "utf8mb4"
+        }
+      }
+    }
+  }
+}</rs-code>
+            </div>
+        </rs-card>
+    </div>
+    <div class="col s12">
+        <rs-paragraph>
+            In such case, a <code>charset</code> set on any property will override the default charset.
+        </rs-paragraph>
+    </div>
+</rs-container>
