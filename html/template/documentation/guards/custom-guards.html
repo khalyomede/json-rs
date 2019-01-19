@@ -5,36 +5,36 @@
             <rs-breadcrumb>
                 <rs-breadcrumb-item to="/rs-json" text="Home" />
                 <rs-breadcrumb-item to="/rs-json/documentation" text="Documentation" />
-                <rs-breadcrumb-item to="/rs-json/documentation/custom-guards" text="Custom guards" />
+                <rs-breadcrumb-item to="/rs-json/documentation/guards" text="Guards" />
+                <rs-breadcrumb-item to="/rs-json/documentation/guards/custom-guards" text="Custom guards" />
             </rs-breadcrumb>
         </div>
         <div class="col s12">
-            <p class="flow-text">Custom guards can be created by you, the end developer, to extend guards in case <router-link to="/rs-json/documentation/native-guards">native guards</router-link> are not enough.</p>
+            <p class="flow-text">Custom guards can be created by you, the end developer, to extend guards in case <router-link to="/rs-json/documentation/guards/native-guards">native guards</router-link> are not enough.</p>
             <p class="flow-text">Here is a basic example of new guard: longitude (<a href="https://en.wikipedia.org/wiki/Longitude" target="blank">longitudes</a> are floats between -180 and 180 decimal degrees).</p>
         </div>
         <div class="col s12">
             <div class="card">
                 <div class="card-tabs">
                     <ul class="tabs tabs-fixed-width">
-                    <li class="tab"><a href="#simple-guard-php" class="active">PHP</a></li>
-                    <li class="tab"><a href="#simple-guard-javascript">Node</a></li>
+                    <li class="tab"><a href="#simple-guard-php-7-2" class="active">PHP 7.2</a></li>
+                    <li class="tab"><a href="#simple-guard-nodejs">NodeJS</a></li>
                     <li class="tab"><a href="#simple-guard-python">Python 3</a></li>
-                    <li class="tab"><a href="#simple-guard-your-language">Your language</a></li>
                     </ul>
                 </div>
                 <div class="card-content grey lighten-4">
-                    <div id="simple-guard-php">
+                    <div id="simple-guard-php-7-2">
                         <pre><code class="language-PHP">
 use RsJson\RsJson;
 
 if (!RsJson::hasGuard('longitude')) {
-  RsJson::addGuard('longitude', function($value): bool {
+  RsJson::addGuard('longitude', function(float $value): bool {
     return -180 <= $value && $value <= 180;
   });
 }
 </code></pre>
                     </div>
-                    <div id="simple-guard-javascript">
+                    <div id="simple-guard-nodejs">
                         <pre><code class="language-javascript">
 const RsJson = require('rs-json');
 // import * as RsJson from 'rs-json';
@@ -52,7 +52,6 @@ if not RsJson.has_guard('longitude'):
   RsJson.add_guard('longitude', lambda value: -180 <= value and value <= 180)
 </code></pre>
                     </div>
-                    <div id="simple-guard-your-language">If you whish to feature your implementation in your language, please make an issue. Thank you.</div>
                 </div>
             </div>
         </div>
@@ -63,27 +62,26 @@ if not RsJson.has_guard('longitude'):
             <div class="card">
                 <div class="card-tabs">
                     <ul class="tabs tabs-fixed-width">
-                    <li class="tab"><a href="#complex-guard-php" class="active">PHP</a></li>
-                    <li class="tab"><a href="#complex-guard-javascript">Node</a></li>
+                    <li class="tab"><a href="#complex-guard-php-7-2" class="active">PHP 7.2</a></li>
+                    <li class="tab"><a href="#complex-guard-nodejs">NodeJS</a></li>
                     <li class="tab"><a href="#complex-guard-python">Python 3</a></li>
-                    <li class="tab"><a href="#complex-guard-your-language">Your language</a></li>
                     </ul>
                 </div>
                 <div class="card-content grey lighten-4">
-                    <div id="complex-guard-php">
+                    <div id="complex-guard-php-7-2">
                         <pre><code class="language-PHP">
 use RsJson\RsJson;
 use DateTime;
 use InvalidArgumentException;
 
 if(!RsJson::hasGuard('before')) {
-  RsJson::addGuard('before', function($value, string $parameters, object $property, array $properties): bool {
+  RsJson::addGuard('before', function(string $value, string $parameters, object $property, array $properties): bool {
     if (empty($parameters)) {
       throw new InvalidArgumentException('guard "before" expects a parameter');
     }
 
     $propertiesNames = array_map(function($property) {
-        return $property->name;
+      return $property->name;
     }, $properties);
 
     if (!in_array($parameters, $propertiesNames)) {
@@ -95,7 +93,7 @@ if(!RsJson::hasGuard('before')) {
 }
 </code></pre>
                     </div>
-                    <div id="complex-guard-javascript">
+                    <div id="complex-guard-nodejs">
                         <pre><code class="language-javascript">
 const RsJson = require('rs-json');
 // import * as RsJson from 'rs-json';
@@ -107,7 +105,7 @@ if (!RsJson.hasGuard('before')) {
     }
 
     if(!properties.map(property => property.name).includes(parameters)) {
-        throw new Error(`missing property ${parameters} on model ${property.model}`)
+      throw new Error(`missing property ${parameters} on model ${property.model}`)
     }
 
     return new Date(value) < new Date(properties[parameters].value)
@@ -123,8 +121,7 @@ from dateutil.parser import parse
 if not RsJson.has_guard('before'):
   RsJson.add_guard('before', lambda value, parameters, prop, props: parse(value) < parse(props[parameters].value))
 </code></pre>
-                    _</div>
-                    <div id="complex-guard-your-language">If you whish to feature your implementation in your language, please make an issue. Thank you.</div>
+                    </div>
                 </div>
             </div>
         </div>

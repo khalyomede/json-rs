@@ -52,3 +52,11 @@ main {
 .no-return {
 	white-space: nowrap;
 }
+
+.no-bullet {
+	list-style-type: none;
+}
+
+.lined {
+	border-left: dotted 1px rgba(0, 0, 0, 0.1);
+}

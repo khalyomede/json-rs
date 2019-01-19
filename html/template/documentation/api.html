@@ -7,34 +7,28 @@
             <rs-breadcrumb-item to="/rs-json/documentation/api" text="API" />
         </rs-breadcrumb>
     </div>
+    <rs-spacer />
     <div class="col s12">
-        <ul class="flow-text browser-default">
-            <li><a href="#version">version</a></li>
-            <li><a href="#license">license</a></li>
+        <ul class="flow-text">
             <li><a href="#charset">charset</a></li>
+            <li><a href="#license">license</a></li>
             <li>
                 <a href="#schema">schema</a>
-                <ul class="browser-default">
+                <ul class="browser-default no-bullet lined">
                     <li>
                         <a href="#model">&#x3C;model&#x3E;</a>
-                        <ul class="browser-default">
+                        <ul class="browser-default no-bullet lined">
                             <li><a href="#identifier">identifier</a></li>
+                            <li><a href="#name">name</a></li>
                             <li>
-                                <a href="#uniques">uniques</a>
-                                <ul class="browser-default">
-                                    <li><a href="#unique">&#x3C;unique&#x3E;</a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="#properties">properties</a>
-                                <ul class="browser-default">
+                                <a href="#properties">&#x3C;properties&#x3E;</a>
+                                <ul class="browser-default no-bullet lined">
                                     <li>
                                         <a href="#property">&#x3C;property&#x3E;</a>
-                                        <ul class="browser-default">
+                                        <ul class="browser-default no-bullet lined">
                                             <li><a href="#for">for</a></li>
                                             <li><a href="#guards">guards</a></li>
                                             <li><a href="#incremented">incremented</a></li>
-                                            <li><a href="#length">length</a></li>
                                             <li><a href="#minimum">minimum</a></li>
                                             <li><a href="#maximum">maximum</a></li>
                                             <li><a href="#precision">precision</a></li>
@@ -45,11 +39,23 @@
                                     </li>
                                 </ul>
                             </li>
+                            <li>
+                                <a href="#uniques">uniques</a>
+                                <ul class="browser-default no-bullet lined">
+                                    <li><a href="#unique">&#x3C;unique&#x3E;</a></li>
+                                </ul>
+                            </li>
                         </ul>
                     </li>
                 </ul>
             </li>
+            <li><a href="#version">version</a></li>
         </ul>
+    </div>
+    <div class="col s12">
+        <rs-paragraph>
+            If marked like <code>&#x3C;property&#x3E;</code>, it means this attribute can be found many times.
+        </rs-paragraph>
     </div>
     <div class="col s12">
         <div id="version">
@@ -63,6 +69,7 @@
             <h2>license</h2>
             <ul>
                 <li><b>type</b> string</li>
+                <li><b>default</b> "none"</li>
             </ul>
             A license name.
         </div>
@@ -70,12 +77,16 @@
             <h2>charset</h2>
             <ul>
                 <li><b>type</b> string</li>
+                <li><b>default</b> "utf8"</li>
             </ul>
             A character set to use for all the property inside the <a href="#schema">schema</a>. See the <router-link to="/rs-json/documentation/charsets">charsets</router-link> documentation for a list of supported character set.
         </div>
         <div id="schema">
             <h2>schema</h2>
-            <ul><li><b>type</b> object</li></ul>
+            <ul>
+                <li><b>type</b> object</li>
+                <li><b>default</b> {}</li>
+            </ul>
             Each key represent a <a href="#model">model</a> name
         </div>
         <div id="model">
@@ -89,12 +100,16 @@
             <h2>identifier</h2>
             <ul>
                 <li><b>type</b> array&#x3C;string&#x3E;</li>
+                <li><b>default</b> []</li>
             </ul>
             A list of <a href="#property">property</a> name to use to identify the record.
         </div>
         <div id="uniques">
             <h2>uniques</h2>
-            <ul><li><b>type</b> array&#x3C;<a href="#unique">unique</a>&#x3E;</li></ul>
+            <ul>
+                <li><b>type</b> array&#x3C;<a href="#unique">unique</a>&#x3E;</li>
+                <li><b>default</b> []</li>
+            </ul>
             A list of <a href="#unique">unique</a> objects to use to add a constraint of the desired properties.
         </div>
         <div id="unique">
@@ -110,6 +125,82 @@
                 <li><b>type</b> object</li>
             </ul>
             A list of <a href="#property">property</a>.
+        </div>
+        <div id="property">
+            <h2>property</h2>
+            <ul>
+                <li><b>type</b> object</li>
+            </ul>
+            A set of attributes for a given <a href="#model">model</a>.
+        </div>
+        <div id="for">
+            <h2>for</h2>
+            <ul>
+                <li><b>type</b> string</li>
+            </ul>
+            A <a href="#model">model</a> name the current property relate to. Useful when the attribute <a href="#type">type</a> of the current <a href="#property">property</a> is defined to <code>relation</code>.
+        </div>
+        <div id="guards">
+            <h2>guards</h2>
+            <ul>
+                <li><b>type</b> array&#x3C;string&#x3E;</li>
+                <li><b>default</b> []</li>
+            </ul>
+            Guards perform validation before a data is being inserted or updated. Check out <router-link to="/rs-json/documentation/guards">guards documentation</router-link> for more information.
+        </div>
+        <div id="incremented">
+            <h2>incremented</h2>
+            <ul>
+                <li><b>type</b> boolean</li>
+                <li><b>default</b> false</li>
+            </ul>
+            <code>true</code> will let the storage engine aware this is an auto incremented field.
+        </div>
+        <div id="minimum">
+            <h2>minimum</h2>
+            <ul>
+                <li><b>type</b> number | null</li>
+                <li><b>default</b> null</li>
+            </ul>
+            Constraint the property to a certain length. If used with <code>type: relation</code>, it will apply a <code>one to many</code>, <code>many to one</code>, or <code>many to many</code>. To specify a <code>many to *</code>, emit this attribute or set it to <code>null</code> (wich means "infinity").
+        </div>
+        <div id="maximum">
+            <h2>maximum</h2>
+            <ul>
+                <li><b>type</b> number | null</li>
+                <li><b>default</b> null</li>
+            </ul>
+            Constraint the property to a certain length. If used with <code>type: relation</code>, it will apply a <code>one to many</code>, <code>many to one</code>, or <code>many to many</code>. To specify a <code>* to many</code>, emit this attribute or set it to <code>null</code> (wich means "infinity").
+        </div>
+        <div id="precision">
+            <h2>precision</h2>
+            <ul>
+                <li><b>type</b> number</li>
+                <li><b>default</b> 0</li>
+            </ul>
+            Used with a number type (see <router-link to="/rs-json/documentation/types">types documentation</router-link>), to give a specific precision (number of digits after the comma).
+        </div>
+        <div id="required">
+            <h2>required</h2>
+            <ul>
+                <li><b>type</b> boolean</li>
+                <li><b>default</b> false</li>
+            </ul>
+            Specifiy that the current <a href="#property">property</a> should be present when inserting or updating a record of the current <a href="#model">model</a>.
+        </div>
+        <div id="type">
+            <h2>type</h2>
+            <ul>
+                <li><b>type</b> string</li>
+            </ul>
+            Specify which type the <a href="#property">property</a> relates to. Useful for controling the quality of the data inside your storage engine. Check <router-link to="/rs-json/documentation/types">types documentation</router-link> for more information.
+        </div>
+        <div id="through">
+            <h2>through</h2>
+            <ul>
+                <li><b>type</b> string</li>
+            </ul>
+            Specify on which <b>table</b> (and not the model name!) the relation will pass through. Only useful when properties <code>minimum</code> and <code>maximum</code> are set to <code>null</code> or not mentioned, and applied when the attribute <code>type</code> is set to <code>relation</code>. Check <router-link>types documentation</router-link> for more information.
         </div>
     </div>
 </rs-container>
