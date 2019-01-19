@@ -1,8 +1,5 @@
-<div class="container">
-    <div class="row">
-        <div class="col s12">
-            <br />
-        </div>
+<rs-container>
+        <rs-spacer />
         <div class="col s12">
             <rs-breadcrumb>
                 <rs-breadcrumb-item to="/rs-json/" text="Home" />
@@ -10,7 +7,7 @@
                 <rs-breadcrumb-item to="/rs-json/documentation/guards" text="Guards" />
             </rs-breadcrumb>
         </div>
-        <div class="col s12"><br></div>
+        <rs-spacer />
         <div class="col s12 m8 l6 offset-m2 offset-l3">
             <div class="collection">
                 <rs-collection-item to="/rs-json/documentation/guards/native-guards" text="Native guards" />
@@ -18,15 +15,15 @@
             </div>
         </div>
         <div class="col s12">
-            <p class="flow-text">Guards are validating data coming to your app back-end. This can means a user filling a form or an app using an API for example.</p>
-            <p class="flow-text">This is the advantage of RS/JSON over a relational diagram, you can mix software and database needs, to form a coherent and comprehensive schema.</p>
-            <p class="flow-text">Here is an example of guard validating that a number is greater than 0.</p>
+            <rs-paragraph>Guards are validating data coming to your app back-end. This can means a user filling a form or an app using an API for example.</rs-paragraph>
+            <rs-paragraph>This is the advantage of RS/JSON over a relational diagram, you can mix software and database needs, to form a coherent and comprehensive schema.</rs-paragraph>
+            <rs-paragraph>Here is an example of guard validating that a number is greater than 0.</rs-paragraph>
         </div>
         <div class="col s12 m8 l6 offset-m2 offset-l3">
-            <div class="card white">
-                <div class="card-content">
-                    <div class="card-title">example.rs.json</div>
-                    <pre><code class="language-json">{
+            <rs-card>
+                <div slot="title">example.rs.json</div>
+                <div slot="content">
+                    <rs-code lang="json">{
   "version": "0.1.0",
   "license": "MIT",
   "charset": "utf8",
@@ -40,22 +37,22 @@
       }
     }
   }
-}</code></pre>
+}</rs-code>
                 </div>
-            </div>
+            </rs-card>
         </div>
         <div class="col s12">
-            <p class="flow-text">Guards will perform on the server-side, so if you are creating a database, they are ignored.</p>
-            <p class="flow-text">Guards validate data coming from your back-end, to insert or update one record. So they will not be triggered if you perform an insertion outside an ORM that supports on RS/JSON.</p>
+            <rs-paragraph>Guards will perform on the server-side, so if you are creating a database, they are ignored.</rs-paragraph>
+            <rs-paragraph>Guards validate data coming from your back-end, to insert or update one record. So they will not be triggered if you perform an insertion outside an ORM that supports on RS/JSON.</rs-paragraph>
         </div>
         <div class="col s12">
-            <p class="flow-text">The philosophy of a guard is: validating general feature. Because this is a fuzzy concept, here is a good example of guard.</p>
+            <rs-paragraph>The philosophy of a guard is: validating general feature. Because this is a fuzzy concept, here is a good example of guard.</rs-paragraph>
         </div>
         <div class="col s12 m8 l6 offset-m2 offset-l3">
-            <div class="card white">
-                <div class="card-content">
-                    <div class="card-title">example.rs.json</div>
-                    <pre><code class="language-json">{
+            <rs-card>
+                <div slot="title">example.rs.json</div>
+                <div slot="content">
+                    <rs-code lang="json">{
   "version": "0.1.0",
   "license": "MIT",
   "charset": "utf8",
@@ -69,19 +66,19 @@
       }
     }
   }                        
-}</code></pre>
+}</rs-code>
                 </div>
-            </div>
+            </rs-card>
         </div>
         <div class="col s12">
-            <p class="flow-text">This is a well designed guard because it address a general feature, the longitude.</p>
-            <p class="flow-text">Now let us look at a less relevant guard.</p>
+            <rs-paragraph>This is a well designed guard because it address a general feature, the longitude.</rs-paragraph>
+            <rs-paragraph>Now let us look at a less relevant guard.</rs-paragraph>
         </div>
         <div class="col s12 m8 l6 offset-m2 offset-l3">
-            <div class="card white">
-                <div class="card-content">
-                    <div class="card-title">example.rs.json</div>
-                    <pre><code class="language-json">{
+            <rs-card>
+                <div slot="title">example.rs.json</div>
+                <div slot="content">
+                    <rs-code lang="json">{
   "version": "0.1.0",
   "license": "MIT",
   "charset": "utf8",
@@ -95,18 +92,18 @@
       }
     }
   }
-}</code></pre>
+}</rs-code>
                 </div>
-            </div>
+            </rs-card>
         </div>
         <div class="col s12">
-            <p class="flow-text">This is a bad guard because it contains a business logic. This is not a general purpose guard. Here is how we would use guards to fit our need.</p>
+            <rs-paragraph>This is a bad guard because it contains a business logic. This is not a general purpose guard. Here is how we would use guards to fit our need.</rs-paragraph>
         </div>
         <div class="col s12 m8 l6 offset-m2 offset-l3">
-            <div class="card white">
-                <div class="card-content">
-                    <div class="card-title">example.rs.json</div>
-                    <pre><code class="language-json">{
+            <rs-card>
+                <div slot="title">example.rs.json</div>
+                <div slot="content">
+                    <rs-code lang="json">{
   "version": "0.1.0",
   "license": "MIT",
   "charset": "utf8",
@@ -120,15 +117,15 @@
       }
     }
   }
-}</code></pre>
+}</rs-code>
+</rs-card>
                 </div>
-            </div>
         </div>
         <div class="col s12">
-            <p class="flow-text">This guard is better for two reason.</p>
-            <p class="flow-text">It does not force a business logic inside a guard, so we do not have to dive into the guard code to understand what is happening.</p>
-            <p class="flow-text">It is explicitly stating that the longitude of the France are between 4 and 8 decimal degrees.</p>
+            <rs-paragraph>This guard is better for two reason.</rs-paragraph>
+            <rs-paragraph>It does not force a business logic inside a guard, so we do not have to dive into the guard code to understand what is happening.</rs-paragraph>
+            <rs-paragraph>It is explicitly stating that the longitude of the France are between 4 and 8 decimal degrees.</rs-paragraph>
         </div>
     </div>
-    <rs-edit-proposal-fab href="https://github.com/khalyomede/rs-json/edit/gh-pages/rs-json/html/template/documentation/guards.html" />
-</div>
+    <rs-edit-proposal-fab href="/html/template/documentation/guards.html" />
+</rs-container>

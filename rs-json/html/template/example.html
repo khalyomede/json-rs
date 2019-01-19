@@ -1,33 +1,24 @@
-<div class="container">
-    <div class="row">
-        <div class="col s12">
-            <br />
-        </div>
+<rs-container>
+        <rs-spacer />
         <div class="col s12">
             <rs-breadcrumb>
                 <rs-breadcrumb-item to="/rs-json" text="Home" />
                 <rs-breadcrumb-item to="/rs-json/example" text="Example" />
             </rs-breadcrumb>
         </div>
-        <div class="col s12">
-            <br />
-        </div>
+        <rs-spacer />
         <div class="col s12">
             <p class="flow-text">
                 In order to understand how RS/JSON takes place in your IT, we will take inspiration from a real life example. Our business today: a book store.
             </p>
         </div>
-        <div class="col s12">
-            <br />
-        </div>
+        <rs-spacer />
         <div class="col s12 m10 l8 offset-m1 offset-l2">
             <div class="center-align">
                 <img class="materialboxed" width="100%" src="/rs-json/img/example-book-store.svg" />
             </div>
         </div>
-        <div class="col s12">
-            <br />
-        </div>
+        <rs-spacer />
         <div class="col s12">
             <p class="flow-text">
                 One of the problem with diagrams is that they lack of information. Is the ISBN in norm ISBN-10 or ISBN-13? Does the return date can have a value lower than the borrowed date?
@@ -49,16 +40,14 @@
                 Fair enough, we can move on and create our diagram. Let us start with modelizing books:
             </p>
         </div>
-        <div class="col s12">
-            <br />
-        </div>
+        <rs-spacer />
         <div class="col s12 m10 l8 offset-m1 offset-l2">
-            <div class="card white">
-                <div class="card-content">
-                    <div class="card-title">
-                        book-store.rs.json
-                    </div>
-                    <pre><code class="language-json">{
+            <rs-card>
+              <div slot="title">
+                book-store.rs.json
+              </div>
+                    <div slot="content">
+                    <rs-code lang="json">{
   "version": "0.1.0",
   "license": "MIT",
   "charset": "utf8",
@@ -77,10 +66,10 @@
       }
     }
   }                
-}</code></pre>
+}</rs-code>
 
                 </div>
-            </div>
+              </rs-card>
         </div>
         <div class="col s12">
             <p class="flow-text">
@@ -93,13 +82,13 @@
             </blockquote>
         </div>
         <div class="col s12">
-            <p class="flow-text">This means the ISBN should have a particular form and is checkable (more information on the <a href="https://en.wikipedia.org/wiki/International_Standard_Book_Number#ISBN-13_check_digit_calculation" target="blank">wikipedia page</a>). To sum it up, exactly 17 characters (including dashes), and some control checks. Sounds like guards are the man for the job:</p>
+            <rs-paragraph>This means the ISBN should have a particular form and is checkable (more information on the <a href="https://en.wikipedia.org/wiki/International_Standard_Book_Number#ISBN-13_check_digit_calculation" target="blank">wikipedia page</a>). To sum it up, exactly 17 characters (including dashes), and some control checks. Sounds like guards are the men for the job:</rs-paragraph>
         </div>
         <div class="col s12 m10 l8 offset-m1 offset-l2">
-            <div class="card white">
-                <div class="card-content">
-                    <div class="card-title">book-store.rs.json</div>
-                    <pre><code class="language-json">{
+            <rs-card>
+              <div slot="title">book-store.rs.json</div>
+                <div slot="content">
+                    <rs-code lang="json">{
   "version": "0.1.0",
   "license": "MIT",
   "charset": "utf8",
@@ -119,21 +108,21 @@
       }
     }
   }                
-}</code></pre>
+}</rs-code>
+</rs-card>
                 </div>
-            </div>
         </div>
         <div class="col s12">
             <p class="flow-text">
                 This guard is coded in your back-end software. Since it is not part of the <router-link to="/rs-json/documentation/guards/native-guards">native guards</router-link>, you or your collegues will have to code it.
             </p>
-            <p class="flow-text">Guards are performing application-side, and are great to ensure data coming from your apps are getting clean before being inserted or updated.</p>
-            <p class="flow-text">Now, we could also inform the database that our isbn has a maximum length of 17 character, using the <code>maximum</code> key on this property. Or we could use a <router-link to="/rs-json/documentation/types/custom-types">custom type</router-link> to factorize all those parameters.</p>
+            <rs-paragraph>Guards are performing application-side, and are great to ensure data coming from your apps are getting clean before being inserted or updated.</rs-paragraph>
+            <rs-paragraph>Now, we could also inform the database that our isbn has a maximum length of 17 character, using the <code>maximum</code> key on this property. Or we could use a <router-link to="/rs-json/documentation/types/custom-types">custom type</router-link> to factorize all those parameters.</rs-paragraph>
         </div>
         <div class="col s12 m10 l8 offset-m1 offset-l2">
-            <div class="card white">
-                <div class="card-content">
-                    <div class="card-title">book-store.rs.json</div>
+            <rs-card>
+              <div slot="title">book-store.rs.json</div>
+                <div slot="content">
                     <rs-code lang="json">{
   "version": "0.1.0",
   "license": "MIT",
@@ -155,7 +144,7 @@
   }                
 }</rs-code>
                 </div>
-            </div>
+              </rs-card>
         </div>
         <div class="col s12">
             <p class="flow-text">
@@ -172,10 +161,10 @@
             </p>
         </div>
         <div class="col s12 m10 l8 offset-m1 offset-l2">
-            <div class="card white">
-                <div class="card-content">
-                    <div class="card-title">book-store.rs.json</div>
-                    <pre><code class="language-json">{
+            <rs-card>
+              <div slot="title">book-store.rs.json</div>
+                <div slot="content">
+                    <rs-code lang="json">{
   "version": "0.1.0",
   "license": "MIT",
   "charset": "utf8",
@@ -196,18 +185,18 @@
       }
     }
   }                
-}</code></pre>
+}</rs-code>
                 </div>
-            </div>
+              </rs-card>
         </div>
         <div class="col s12">
-            <p class="flow-text">We often use an integer as an identifier in our app for each of our records. Let us specify the <code>id</code> property is our primary key:</p>
+            <rs-paragraph>We often use an integer as an identifier in our app for each of our records. Let us specify the <code>id</code> property is our primary key:</rs-paragraph>
         </div>
         <div class="col s12 m10 l8 offset-m1 offset-l2">
-            <div class="card white">
-                <div class="card-content">
-                    <div class="card-title">book-store.rs.json</div>
-                    <pre><code class="language-json">{
+            <rs-card>
+              <div slot="title">book-store.rs.json</div>
+                <div slot="content">
+                    <rs-code lang="json">{
   "version": "0.1.0",
   "license": "MIT",
   "charset": "utf8",
@@ -229,9 +218,9 @@
       }
     }
   }                
-}</code></pre>
+}</rs-code>
                 </div>
-            </div>
+              </rs-card>
         </div>
         <div class="col s12">
             <p class="flow-text">
@@ -239,10 +228,10 @@
             </p>
         </div>
         <div class="col s12 m10 l8 offset-m1 offset-l2">
-            <div class="card white">
-                <div class="card-content">
-                    <div class="card-title">book-store.rs.json</div>
-                    <pre><code class="language-json">{
+            <rs-card>
+              <div slot="title">book-store.rs.json</div>
+                <div slot="content">
+                    <rs-code lang="json">{
   "version": "0.1.0",
   "license": "MIT",
   "charset": "utf8",
@@ -265,9 +254,9 @@
       }
     }
   }                
-}</code></pre>
+}</rs-code>
                 </div>
-            </div>
+              </rs-card>
         </div>
         <div class="col s12">
             <p class="flow-text">
@@ -281,10 +270,10 @@
             </p>
         </div>
         <div class="col s12 m10 l8 offset-m1 offset-l2">
-            <div class="card white">
-                <div class="card-content">
-                    <div class="card-title">book-store.rs.json</div>
-                    <pre><code class="language-json">{
+            <rs-card>
+              <div slot="title">book-store.rs.json</div>
+                <div slot="content">
+                    <rs-code lang="json">{
   "version": "0.1.0",
   "license": "MIT",
   "charset": "utf8",
@@ -312,9 +301,9 @@
       }
     }
   }                
-}</code></pre>
+}</rs-code>
                 </div>
-            </div>
+              </rs-card>
         </div>
         <div class="col s12">
             <p class="flow-text">
@@ -330,10 +319,10 @@
             </p>
         </div>
         <div class="col s12 m10 l8 offset-m1 offset-l2">
-          <div class="card white">
-              <div class="card-content">
-                  <div class="card-title">book-store.rs.json</div>
-                  <pre><code class="language-json">{
+          <rs-card>
+            <div slot="title">book-store.rs.json</div>
+              <div slot="content">
+                  <rs-code lang="json">{
   "version": "0.1.0",
   "license": "MIT",
   "charset": "utf8",
@@ -363,9 +352,9 @@
       }
     }
   }                
-}</code></pre>
+}</rs-code>
               </div>
-          </div>
+            </rs-card>
       </div>
       <div class="col s12">
         <p class="flow-text">
@@ -376,10 +365,10 @@
         </p>
       </div>
       <div class="col s12 m10 l8 offset-m1 offset-l2">
-        <div class="card white">
-            <div class="card-content">
-                <div class="card-title">book-store.rs.json</div>
-                <pre><code class="language-json">{
+        <rs-card>
+          <div slot="title">book-store.rs.json</div>
+            <div slot="content">
+                <rs-code lang="json">{
 "version": "0.1.0",
 "license": "MIT",
 "charset": "utf8",
@@ -411,9 +400,9 @@
     }
   }
 }                
-}</code></pre>
+}</rs-code>
             </div>
-        </div>
+          </rs-card>
       </div>
       <div class="col s12">
         <p class="flow-text">
@@ -426,10 +415,10 @@
         </p>
       </div>
       <div class="col s12 m10 l8 offset-m1 offset-l2">
-        <div class="card white">
-            <div class="card-content">
-                <div class="card-title">book-store.rs.json</div>
-                <pre><code class="language-json">{
+        <rs-card>
+          <div slot="title">book-store.rs.json</div>
+            <div slot="content">
+                <rs-code lang="json">{
 "version": "0.1.0",
 "license": "MIT",
 "charset": "utf8",
@@ -487,9 +476,9 @@
     }
   }
 }                
-}</code></pre>
+}</rs-code>
             </div>
-        </div>
+          </rs-card>
       </div>
       <div class="col s12">
         <p class="flow-text">
@@ -497,10 +486,10 @@
         </p>
       </div>
       <div class="col s12 m10 l8 offset-m1 offset-l2">
-        <div class="card white">
-            <div class="card-content">
-                <div class="card-title">book-store.rs.json</div>
-                <pre><code class="language-json">{
+        <rs-card>
+          <div slot="title">book-store.rs.json</div>
+            <div slot="content">
+                <rs-code lang="json">{
   "version": "0.1.0",
   "license": "MIT",
   "charset": "utf8",
@@ -564,9 +553,9 @@
       }
     }
   }                
-}</code></pre>
+}</rs-code>
             </div>
-        </div>
+          </rs-card>
       </div>
       <div class="col s12">
         <p class="flow-text">
@@ -578,13 +567,13 @@
         <p class="flow-text">
           Not specifying a <code>maximum</code> means it does not have limited number of related models. This relation means an author can have between 0 and an infinity of books.
         </p>
-        <p class="flow-text">To finish, let us add the order model.</p>
+        <rs-paragraph>To finish, let us add the order model.</rs-paragraph>
       </div>
       <div class="col s12 m10 l8 offset-m1 offset-l2">
-        <div class="card white">
-            <div class="card-content">
-                <div class="card-title">book-store.rs.json</div>
-                <pre><code class="language-json">{
+        <rs-card>
+            <div slot="content">
+                <div slot="title">book-store.rs.json</div>
+                <rs-code lang="json">{
   "version": "0.1.0",
   "license": "MIT",
   "charset": "utf8",
@@ -671,9 +660,9 @@
       }
     }
   }
-}</code></pre>
+}</rs-code>
             </div>
-        </div>
+          </rs-card>
       </div>
       <div class="col s12">
         <p class="flow-text">
@@ -687,10 +676,10 @@
         </p>
       </div>
       <div class="col s12 m10 l8 offset-m1 offset-l2">
-        <div class="card white">
-            <div class="card-content">
-                <div class="card-title">book-store.rs.json</div>
-                <pre><code class="language-json">{
+        <rs-card>
+          <div slot="title">book-store.rs.json</div>
+            <div slot="content">
+                <rs-code lang="json">{
   "version": "0.1.0",
   "license": "MIT",
   "charset": "utf8",
@@ -787,14 +776,15 @@
       }
     }
   }
-}</code></pre>
+}</rs-code>
             </div>
-        </div>
+          </rs-card>
       </div>
       <div class="col s12">
-        <p class="flow-text">We added <code>orders</code> relationship on Book model and <code>books</code> relation on Order model. The <code>through</code> key specify through which join table the ORM should grab, insert or update the data.</p>
-        <p class="flow-text">This last change on our RS/JSON schema will end this example. We hope it helped you catch the concept.</p>
+        <rs-paragraph>We added <code>orders</code> relationship on Book model and <code>books</code> relation on Order model. The <code>through</code> key specify through which join table the ORM should grab, insert or update the data.</rs-paragraph>
+        <rs-paragraph>This last change on our RS/JSON schema will end this example. We hope it helped you catch the concept.</rs-paragraph>
+        <rs-paragraph>To go deeper, check the <router-link to="/rs-json/documentation">documentation</router-link>.</rs-paragraph>
       </div>
     </div>
-    <rs-edit-proposal-fab href="https://github.com/khalyomede/rs-json/edit/gh-pages/rs-json/html/template/example.html" />
-</div>
+    <rs-edit-proposal-fab href="/html/template/example.html" />
+  </rs-container>

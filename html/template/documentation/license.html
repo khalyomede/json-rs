@@ -1,0 +1,31 @@
+<rs-container>
+    <rs-spacer />
+    <div class="col s12">
+        <rs-breadcrumb>
+            <rs-breadcrumb-item to="/rs-json/" text="Home" />
+            <rs-breadcrumb-item to="/rs-json/documentation" text="Documentation" />
+            <rs-breadcrumb-item to="/rs-json/documentation/license" text="License" />
+        </rs-breadcrumb>
+    </div>
+    <div class="col s12">
+        <rs-paragraph>
+            Licensing in RS/JSON is a way to inform the end developer how to treat the schema. Depending the license, he will be able to use it for commercial use, inherit and update the schema, and others use cases.
+        </rs-paragraph>
+        <rs-paragraph>
+            The license attribute is just a license name. No URL is required. You may also put your company name if it is a proprietary license.
+        </rs-paragraph>
+    </div>
+    <div class="col s12">
+        <rs-card>
+            <div slot="content">
+                <rs-code lang="json">{
+  "version": "0.1.0",
+  "license": "MIT",
+  "charset": "utf8",
+  "schema": {}                    
+}</rs-code>
+            </div>
+        </rs-card>
+    </div>
+    <rs-edit-proposal-fab href="/html/template/documentation/license.html" />
+</rs-container>

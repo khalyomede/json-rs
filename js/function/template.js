@@ -1,6 +1,8 @@
 const template = function(resolve, reject, path, options) {
 	const absolutePath = `/rs-json/html/template/${path}.html`;
 
+	console.log("calling", path);
+
 	fetch(absolutePath)
 		.then(function(response) {
 			return response.text();

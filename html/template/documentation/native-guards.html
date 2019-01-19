@@ -1,7 +1,7 @@
 <div class="container">
 	<div class="row">
-        <div class="col s12"><br /></div>
-        <div class="col s12"><br /></div>
+        <rs-spacer />
+        <rs-spacer />
         <div class="col s12">
             <rs-breadcrumb>
                 <rs-breadcrumb-item to="/rs-json" text="Home" />
@@ -9,19 +9,19 @@
                 <rs-breadcrumb-item to="/rs-json/documentation/guards/native-guards" text="Native guards" />
             </rs-breadcrumb>
         </div>
-        <div class="col s12"><br /></div>
+        <rs-spacer />
 		<div class="col s12">
 			<p class="flow-text">
 				Native guards are tools already available for you. Every library
 				implementing RS/JSON ship those in order to help you being up
 				and runing fast.
             </p>
-            <p class="flow-text">Below is the list of native guards, with a description of their behavior.</p>
+            <rs-paragraph>Below is the list of native guards, with a description of their behavior.</rs-paragraph>
         </div>
         <div class="col s12">
-            <div class="card white">
-                <div class="card-content">
-                    <div class="card-title">Native guards list</div>
+            <rs-card>
+                <div slot="title">Native guards list</div>
+                <div slot="content">
                     <table class="highlight responsive-table">
                         <thead>
                             <tr>
@@ -42,7 +42,7 @@
                         </tbody>
                     </table>
                 </div>
-            </div>
+            </rs-card>
         </div>
 	</div>
 </div>

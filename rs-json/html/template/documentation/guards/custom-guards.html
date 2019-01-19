@@ -1,6 +1,5 @@
-<div class="container">
-    <div class="row">
-        <div class="col s12"><br></div>
+<rs-container>
+        <rs-spacer />
         <div class="col s12">
             <rs-breadcrumb>
                 <rs-breadcrumb-item to="/rs-json" text="Home" />
@@ -10,8 +9,8 @@
             </rs-breadcrumb>
         </div>
         <div class="col s12">
-            <p class="flow-text">Custom guards can be created by you, the end developer, to extend guards in case <router-link to="/rs-json/documentation/guards/native-guards">native guards</router-link> are not enough.</p>
-            <p class="flow-text">Here is a basic example of new guard: longitude (<a href="https://en.wikipedia.org/wiki/Longitude" target="blank">longitudes</a> are floats between -180 and 180 decimal degrees).</p>
+            <rs-paragraph>Custom guards can be created by you, the end developer, to extend guards in case <router-link to="/rs-json/documentation/guards/native-guards">native guards</router-link> are not enough.</rs-paragraph>
+            <rs-paragraph>Here is a basic example of new guard: longitude (<a href="https://en.wikipedia.org/wiki/Longitude" target="blank">longitudes</a> are floats between -180 and 180 decimal degrees).</rs-paragraph>
         </div>
         <div class="col s12">
             <div class="card">
@@ -32,7 +31,7 @@ if (!RsJson::hasGuard('longitude')) {
     return -180 <= $value && $value <= 180;
   });
 }
-</code></pre>
+</rs-code>
                     </div>
                     <div id="simple-guard-nodejs">
                         <pre><code class="language-javascript">
@@ -42,7 +41,7 @@ const RsJson = require('rs-json');
 if (!RsJson.hasGuard('longitude')) {
   RsJson.addGuard('longitude', value => -180 <= value && value <= 180);
 }
-</code></pre>
+</rs-code>
                     </div>
                     <div id="simple-guard-python">
                         <pre><code class="language-python">
@@ -50,13 +49,13 @@ from rsjson import RsJson
 
 if not RsJson.has_guard('longitude'):
   RsJson.add_guard('longitude', lambda value: -180 <= value and value <= 180)
-</code></pre>
+</rs-code>
                     </div>
                 </div>
             </div>
         </div>
         <div class="col s12">
-            <p class="flow-text">Another more complex example: <code>before:field</code>, which check if a property (date) is before another property.</p>
+            <rs-paragraph>Another more complex example: <code>before:field</code>, which check if a property (date) is before another property.</rs-paragraph>
         </div>
         <div class="col s12">
             <div class="card">
@@ -91,7 +90,7 @@ if(!RsJson::hasGuard('before')) {
     return (new DateTime($value)) < (new DateTime($properties[$parameters]->value));
   });
 }
-</code></pre>
+</rs-code>
                     </div>
                     <div id="complex-guard-nodejs">
                         <pre><code class="language-javascript">
@@ -111,7 +110,7 @@ if (!RsJson.hasGuard('before')) {
     return new Date(value) < new Date(properties[parameters].value)
   });
 }
-</code></pre>
+</rs-code>
                     </div>
                     <div id="complex-guard-python">
                         <pre><code class="language-python">
@@ -120,10 +119,11 @@ from dateutil.parser import parse
 
 if not RsJson.has_guard('before'):
   RsJson.add_guard('before', lambda value, parameters, prop, props: parse(value) < parse(props[parameters].value))
-</code></pre>
+</rs-code>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+    <rs-edit-proposal-fab href="/html/template/documentation/guards/custom-guards.html" />
+</rs-container>

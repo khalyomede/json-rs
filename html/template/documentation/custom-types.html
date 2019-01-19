@@ -1,6 +1,6 @@
 <div class="container">
 	<div class="row">
-        <div class="col s12"><br /></div>
+        <rs-spacer />
         <div class="col s12">
             <rs-breadcrumb>
                 <rs-breadcrumb-item to="/rs-json" text="Home" />
@@ -8,7 +8,7 @@
                 <rs-breadcrumb-item to="/rs-json/documentation/types/custom-types" text="Custom types" />
             </rs-breadcrumb>
         </div>
-        <div class="col s12"><br /></div>
+        <rs-spacer />
 		<div class="col s12">
 			<p class="flow-text">
 				Custom types extend from
@@ -54,7 +54,7 @@ if (!RsJson::hasType('longitude')) {
     $property->guards = ['min:-180', 'max:180'];
   });
 }
-        </code></pre>
+        </rs-code>
 					</div>
 					<div id="custom-type-longitude-node">
 						<pre><code class="language-javascript">
@@ -67,7 +67,7 @@ if(!RsJson.hasType('longitude')) {
     property.precision = 8;
     property.guards = ['min:-180', 'max:180'];
   });
-}</code></pre>
+}</rs-code>
 					</div>
 				</div>
 			</div>

@@ -269,6 +269,20 @@ const router = new VueRouter({
 			}
 		},
 		{
+			name: "documentation-version",
+			path: "/rs-json/documentation/version",
+			component: function(resolve, reject) {
+				template(resolve, reject, "documentation/version");
+			}
+		},
+		{
+			name: "documentation-license",
+			path: "/rs-json/documentation/license",
+			component: function(resolve, reject) {
+				template(resolve, reject, "documentation/license");
+			}
+		},
+		{
 			name: "example",
 			path: "/rs-json/example",
 			component: function(resolve, reject) {
@@ -301,6 +315,7 @@ const vue = new Vue({
 });
 
 router.beforeEach(function(to, from, next) {
+	console.log(to);
 	vue.loading = true;
 
 	next();

@@ -1,17 +1,16 @@
-<div class="container">
-	<div class="row">
-		<div class="col s12"><br /></div>
+<rs-container>
+		<rs-spacer />
 		<div class="col s12">
 			<div class="center-align">
 				<strong><h2>Relational Schema over JSON</h2></strong>
 			</div>
 		</div>
-		<div class="col s12"><br /></div>
+		<rs-spacer />
 		<div class="col s12 m10 offset-m1 l8 offset-l2">
-			<div class="card white">
-				<div class="card-content">
-					<span class="card-title">example.rs.json</span>
-					<pre><code class="language-json">{
+			<rs-card>
+				<span slot="title">example.rs.json</span>
+				<div slot="content">
+					<rs-code lang="json">{
   "version": "0.1.0",
   "license": "MIT",
   "charset": "utf8",
@@ -34,17 +33,17 @@
       }
     }
   }    
-}</code></pre>
+}</rs-code>
 				</div>
-			</div>
+			</rs-card>
 		</div>
-		<div class="col s12"><br /></div>
+		<rs-spacer />
 		<div class="col s12">
 			<div class="center-align">
 					<rs-button-link to="/rs-json/example" text="Getting started" />
 			</div>
 		</div>
-		<div class="col s12"><br /></div>
+		<rs-spacer />
 		<div class="col s12">
 			<h3>Single source of truth</h3>
 			<div class="flow-text">
@@ -55,7 +54,7 @@
 				schema.
 			</div>
 		</div>
-		<div class="col s12"><br /></div>
+		<rs-spacer />
 		<div class="col s12">
 			<h3>Raise your data quality</h3>
 			<div class="flow-text">
@@ -66,7 +65,7 @@
 				tools.
 			</div>
 		</div>
-		<div class="col s12"><br /></div>
+		<rs-spacer />
 		<div class="col s12">
 			<h3>Scalable</h3>
 			<div class="flow-text">
@@ -77,22 +76,22 @@
 				No guard fit your need? <router-link to="/rs-json/documentation/guards/custom-guards">Create a customized one</router-link>.
 			</div>
 		</div>
-		<div class="col s12"><br /></div>
+		<rs-spacer />
 		<div class="col s12">
 			<h3>Share your recipes</h3>
 			<div class="flow-text">
-				Because it uses versioning and licensing, you can finally share your recipes. Did you ever whished to blog about your best way to modelize a particular business concept? How many times did you spent the last time you saw a great way to handle a particular business logic?
+				Because it uses <router-link to="/rs-json/documentation/version">versioning</router-link> and <router-link to="/rs-json/documentation/license">licensing</router-link>, you can finally share your recipes. Did you ever whished to blog about your best way to modelize a particular business concept? How many times did you spent the last time you saw a great way to handle a particular business logic?
 			</div>
 		</div>
-		<div class="col s12"><br /></div>
-		<div class="col s12"><br /></div>
+		<rs-spacer />
+		<rs-spacer />
 		<div class="col s12">
 			<div class="center-align">
-				<rs-button-link to="/rs-json/example" text="Learn by example" />
+				<rs-button-link to="/rs-json/documentation" text="Read the documentation" />
 			</div>
 		</div>
-		<div class="col s12"><br /></div>
-		<div class="col s12"><br /></div>
+		<rs-spacer />
+		<rs-spacer />
 	</div>
-	<rs-edit-proposal-fab href="https://github.com/khalyomede/rs-json/edit/gh-pages/rs-json/html/template/index.html" />
-</div>
+	<rs-edit-proposal-fab href="/html/template/index.html" />
+</rs-container>

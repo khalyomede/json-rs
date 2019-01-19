@@ -1,8 +1,6 @@
 <div class="container">
     <div class="row">
-        <div class="col s12">
-            <br />
-        </div>
+        <rs-spacer />
         <div class="col s12">
             <rs-breadcrumb>
                 <rs-breadcrumb-item to="/rs-json" text="Home" />
@@ -11,11 +9,11 @@
             </rs-breadcrumb>
         </div>
         <div class="col s12">
-            <p class="flow-text">RS/JSON supports the following basic types:</p>
+            <rs-paragraph>RS/JSON supports the following basic types:</rs-paragraph>
         </div>
         <div class="col s12 l6 offset-l3">
-            <div class="card white">
-                <div class="card-content">
+            <rs-card>
+                <div slot="content">
                     <table class="responsive-table highlight">
                         <thead>
                             <tr>
@@ -81,13 +79,13 @@
                         </tbody>
                     </table>
                 </div>
-            </div>
+            </rs-card>
         </div>
         <div class="col s12">
             <p class="flow-text">
                 Value list, like <code>enum()</code> or <code>set()</code> are not in RS/JSON native types because it is not a clean and maintainable solution for a set of values.
             </p>
-            <p class="flow-text">We prefer using a proper model with a primary key and a name field, and using this key to link your records to.</p>
+            <rs-paragraph>We prefer using a proper model with a primary key and a name field, and using this key to link your records to.</rs-paragraph>
         </div>
     </div>
 </div>

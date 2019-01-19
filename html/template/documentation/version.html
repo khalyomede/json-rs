@@ -1,0 +1,46 @@
+<rs-container>
+    <rs-spacer />
+    <div class="col s12">
+        <rs-breadcrumb>
+            <rs-breadcrumb-item to="/rs-json" text="Home" />
+            <rs-breadcrumb-item to="/rs-json/documentation" text="Documentation" />
+            <rs-breadcrumb-item to="/rs-json/documentation/version" text="Version" />
+        </rs-breadcrumb>
+    </div>
+    <div class="col s12">
+        <rs-paragraph>
+            RS/JSON schemas expected a <code>version</code> attribute. Here is an example:
+        </rs-paragraph>
+    </div>
+    <div class="col s12 m8 l6 offset-m2 offset-l3">
+        <rs-card>
+            <div slot="title">
+                example.rs.json
+            </div>
+            <dit slot="content">
+                <rs-code lang="json">{
+  "version": "0.1.0",
+  "license": "MIT",
+  "charset": "utf8",
+  "schema": {}            
+}</rs-code>
+            </dit>
+        </rs-card>
+    </div>
+    <div class="col s12">
+        <rs-paragraph>
+            Versioning in RS/JSON has 2 objectives:
+        </rs-paragraph>
+        <ul class="browser-default">
+            <li>Giving your the opportunity to propose incremental changes to your schema</li>
+            <li>Let the migration engine aware of changes and take decisions</li>
+        </ul>
+        <rs-paragraph>
+            Incremental changes let your collegues know what kind of changes you operated on your schema, according to <a href="https://semver.org/" target="blank">semantic versioning</a> principles. This means, if you operated a patch, and your upgrade version from <code>0.1.0</code> to <code>0.1.1</code>, your collegues can figure out it is a fix which has no impact on their data or their app.
+        </rs-paragraph>
+        <rs-paragraph>
+            Migrations engines will take this version into account and operates changes only if the difference between the actual schema and the previous schema is about a minor improvement or a patch. If it is a major improvement, for example from <code>1.4.3</code> to <code>2.0.0</code>, the migration will not operate. With RS/JSON, we want to bring the same advantages we have on code versioning, but for database schemas.
+        </rs-paragraph>
+    </div>
+    <rs-edit-proposal-fab href="/html/template/documentation/version.html" />
+</rs-container>
