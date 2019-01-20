@@ -60,3 +60,7 @@ main {
 .lined {
 	border-left: dotted 1px rgba(0, 0, 0, 0.1);
 }
+
+.CodeMirror-line {
+	font-family: "Fira Mono", monospace !important;
+}

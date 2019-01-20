@@ -7,7 +7,7 @@
 	"dir": "ltr",
 	"lang": "en",
 	"orientation": "any",
-	"theme_color": "#ff9800",
-	"background_color": "#ff9800",
+	"theme_color": "#ff9100",
+	"background_color": "#ff9100",
 	"related_applications": [{ "platform": "web" }]
 }

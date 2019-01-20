@@ -499,7 +499,7 @@ const router = new VueRouter({
 
 									const propertyIncremented =
 										"incremented" in property &&
-										property.incremented
+										property.incremented === true
 											? "AUTO_INCREMENT"
 											: "";
 
@@ -674,9 +674,11 @@ class CreateExampleTables extends Migration {`;
 											return;
 										}
 
-										statements.push(
-											`$table->increments('${propertyName}')`
-										);
+										if (property.incremented === true) {
+											statements.push(
+												`$table->increments('${propertyName}')`
+											);
+										}
 									}
 
 									if ("type" in property === false) {
