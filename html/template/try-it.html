@@ -1,0 +1,38 @@
+<rs-container>
+    <rs-spacer />
+    <div class="col s12">
+        <rs-breadcrumb>
+            <rs-breadcrumb-item to="/" text="Home" />
+            <rs-breadcrumb-item to="/try-it" text="Try it" />
+        </rs-breadcrumb>
+    </div>
+    <div class="col s12">
+        <rs-paragraph>
+            Write some RS/JSON and check how RS/JSON is turning into a code comprehensible by your favorites platform.
+        </rs-paragraph>
+        <p>
+            This is a simplified version of RS/JSON. You can use <code>uniques</code>, <code>type</code>, <code>identifier</code> and <code>charset</code> attributes. Have fun!
+        </p>
+    </div>
+    <div class="col s12 m6 l6">
+        <rs-card>
+            <div slot="content">
+                <textarea id="editor" style="height: auto;">{{ initialCode }}</textarea>
+            </div>
+        </rs-card>
+    </div>
+    <div class="col s12 m6 l6">
+        <div class="card">
+            <div class="card-tabs">
+                <ul class="tabs tabs-fixed-width">
+                    <li class="tab"><a href="#my-sql" class="active">MySQL</a></li>
+                </ul>
+            </div>
+            <div class="card-content grey lighten-4">
+                <div id="my-sql">
+                    <pre><code class="language-sql">{{ mySql }}</code></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+</rs-container>
