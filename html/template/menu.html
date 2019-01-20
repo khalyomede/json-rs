@@ -13,19 +13,34 @@
 				>
 				<ul class="right hide-on-med-and-down">
 					<li>
-						<router-link to="/rs-json/try-it">Try it</router-link>
+						<router-link to="/rs-json/try-it">{{
+							$t("menu.tryit")
+						}}</router-link>
 					</li>
 					<li>
-						<router-link to="/rs-json/example">Example</router-link>
+						<router-link to="/rs-json/example">{{
+							$t("menu.example")
+						}}</router-link>
 					</li>
 					<li>
-						<router-link to="/rs-json/documentation"
-							>Documentation</router-link
-						>
+						<router-link to="/rs-json/documentation">{{
+							$t("menu.documentation")
+						}}</router-link>
 					</li>
 					<li>
 						<a href="https://github.com/khalyomede/rs-json"
 							>Github</a
+						>
+					</li>
+					<li>
+						<a
+							class="dropdown-trigger"
+							href="javascript:;"
+							data-target="dropdown-language"
+							>{{ $t("menu.language")
+							}}<i class="material-icons right"
+								>arrow_drop_down</i
+							></a
 						>
 					</li>
 				</ul>
@@ -33,11 +48,50 @@
 		</nav>
 	</div>
 	<ul class="sidenav" id="mobile-demo">
-		<li><router-link to="/rs-json/try-it">Try it</router-link></li>
-		<li><router-link to="/rs-json/example">Example</router-link></li>
 		<li>
-			<router-link to="/rs-json/documentation">Documentation</router-link>
+			<router-link to="/rs-json/try-it">{{
+				$t("menu.tryit")
+			}}</router-link>
+		</li>
+		<li>
+			<router-link to="/rs-json/example">{{
+				$t("menu.example")
+			}}</router-link>
+		</li>
+		<li>
+			<router-link to="/rs-json/documentation">{{
+				$t("menu.documentation")
+			}}</router-link>
 		</li>
 		<li><a href="https://github.com/khalyomede/rs-json">Github</a></li>
+		<li>
+			<a
+				class="dropdown-trigger"
+				href="javascript:;"
+				data-target="dropdown-language-mobile"
+				>{{ $t("menu.language")
+				}}<i class="material-icons right">arrow_drop_down</i></a
+			>
+		</li>
+	</ul>
+	<ul id="dropdown-language" class="dropdown-content">
+		<li>
+			<a href="javascript:;" v-on:click="changeLanguage('en')">English</a>
+		</li>
+		<li>
+			<a href="javascript:;" v-on:click="changeLanguage('fr')"
+				>Français</a
+			>
+		</li>
+	</ul>
+	<ul id="dropdown-language-mobile" class="dropdown-content">
+		<li>
+			<a href="javascript:;" v-on:click="changeLanguage('en')">English</a>
+		</li>
+		<li>
+			<a href="javascript:;" v-on:click="changeLanguage('fr')"
+				>Français</a
+			>
+		</li>
 	</ul>
 </div>

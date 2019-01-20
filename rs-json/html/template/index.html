@@ -2,7 +2,7 @@
 		<rs-spacer />
 		<div class="col s12">
 			<div class="center-align">
-				<strong><h2>Relational Schema over JSON</h2></strong>
+				<strong><h2>{{ $t('home.title') }}</h2></strong>
 			</div>
 		</div>
 		<rs-spacer />
@@ -40,47 +40,35 @@
 		<rs-spacer />
 		<div class="col s12">
 			<div class="center-align">
-					<rs-button-link to="/rs-json/example" text="Getting started" />
+					<rs-button-link to="/rs-json/example" v-bind:text="$t('home.gettingStartedButton')" />
 			</div>
 		</div>
 		<rs-spacer />
 		<div class="col s12">
-			<h3>Single source of truth</h3>
+			<h3>{{ $t('home.singleSourceOfTruth.title') }}</h3>
 			<div class="flow-text">
-				RS/JSON is a standard proposal for relational schemas. The goal
-				is to unify every softwares, like your relational database
-				software, ORM and migration manager. It is a meta-language over
-				all these tools, to help you focus only once on your database
-				schema.
+				{{ $t('home.singleSourceOfTruth.text') }}
 			</div>
 		</div>
 		<rs-spacer />
 		<div class="col s12">
-			<h3>Raise your data quality</h3>
+			<h3>{{ $t('home.raiseYourDataQuality.title') }}</h3>
 			<div class="flow-text">
-				With the help of <router-link to="/rs-json/documentation/guards">guards</router-link>, which are performing
-				pre-insert/update validations on your software back-end, your
-				data are ensured to be the cleanest possible. This is a good
-				thing when planing on harvesting your data using data analysis
-				tools.
+				{{ $t('home.raiseYourDataQuality.text') }}
 			</div>
 		</div>
 		<rs-spacer />
 		<div class="col s12">
-			<h3>Scalable</h3>
+			<h3>{{ $t('home.scalable.title') }}</h3>
 			<div class="flow-text">
-				Designed to keep the same performance whether you have 10 or
-				1000 objects, thanks to JSON key-pair architecture. <br /> Too many things in one file? Split your business logic in small files. <br /> 
-				Native types are not enough? <router-link to="/rs-json/documentation/types/custom-types">Create your own types</router-link> to abstract
-				your work and focus on your business. <br />
-				No guard fit your need? <router-link to="/rs-json/documentation/guards/custom-guards">Create a customized one</router-link>.
+				{{ $t('home.scalable.text') }}
 			</div>
 		</div>
 		<rs-spacer />
 		<div class="col s12">
-			<h3>Share your recipes</h3>
+			<h3>{{ $t('home.shareYourRecipes.title') }}</h3>
 			<div class="flow-text">
-				Because it uses <router-link to="/rs-json/documentation/version">versioning</router-link> and <router-link to="/rs-json/documentation/license">licensing</router-link>, you can finally share your recipes. Did you ever whished to blog about your best way to modelize a particular business concept? How many times did you spent the last time you saw a great way to handle a particular business logic?
+				{{ $t('home.shareYourRecipes.text') }}
 			</div>
 		</div>
 		<rs-spacer />

@@ -323,6 +323,7 @@ const router = new VueRouter({
 							editor: "",
 							mySql: "",
 							laravel5: "",
+							django2: "",
 							supportedCharsets: ["utf8", "utf8mb4", "iso88591"],
 							supportedTypes: [
 								"integer",
@@ -333,10 +334,6 @@ const router = new VueRouter({
 						};
 					},
 					methods: {
-						onEditorInput: function(event) {
-							this.turnCodeToMySql();
-							this.turnCodeToLaravel5();
-						},
 						turnCodeToMySql: function() {
 							let mySql = "";
 							let rsjson = this.editor.getValue();
@@ -504,7 +501,7 @@ const router = new VueRouter({
 											: "";
 
 									columns.push(
-										`${propertyName} ${propertyType} ${propertyIncremented}`.trim()
+										`\`${propertyName}\` ${propertyType} ${propertyIncremented}`.trim()
 									);
 								}
 
@@ -553,12 +550,16 @@ const router = new VueRouter({
 										const uniqueColumns = unique.join(", ");
 
 										uniques.push(
-											`CONSTRAINT \`${uniqueName}\` UNIQUE(${uniqueColumns})`
+											`CONSTRAINT \`${uniqueName}\` UNIQUE(\`${uniqueColumns}\`)`
 										);
 									}
 								}
 
-								const primaryColumns = identifiers.join(", ");
+								const primaryColumns = identifiers
+									.map(function(column) {
+										return `\`${column}\``;
+									})
+									.join(", ");
 								const primary =
 									"identifier" in model
 										? `,\n\tPRIMARY KEY(${primaryColumns})\n`
@@ -823,6 +824,60 @@ class CreateExampleTables extends Migration {`;
 							}
 
 							this.laravel5 += "\n}";
+						},
+						turnCodeToDjango2: function() {
+							let rsjson = "";
+
+							try {
+								rsjson = JSON.parse(this.editor.getValue());
+							} catch (exception) {
+								if (exception instanceof SyntaxError) {
+									this.django2 = exception.toString();
+								} else {
+									this.django2 = `Unknown error: ${exception.toString()}`;
+								}
+
+								return;
+							}
+
+							/** @todo check charset */
+							/** @todo check schema */
+
+							for (const modelName in rsjson.schema) {
+								const model = rsjson.schema[modelName];
+
+								/** @todo check model */
+								/** @todo check properties */
+
+								for (const propertyName in model.properties) {
+									const property =
+										model.properties[propertyName];
+
+									/** @todo check property */
+									/** @todo check property type */
+
+									switch (property.type) {
+										case "integer":
+											break;
+										case "float":
+											break;
+										case "string":
+											break;
+										case "datetime":
+											break;
+									}
+								}
+
+								const columns = [];
+
+								const classStatement = `class ${modelName}(models.Model):\n\t${columns.join(
+									"\n\t"
+								)}`;
+
+								this.django2 += classStatement;
+							}
+
+							this.django2 = `from django.db import models\n\n`;
 						}
 					},
 					mounted: function() {
@@ -842,10 +897,12 @@ class CreateExampleTables extends Migration {`;
 							self.editor.on("change", function(editor) {
 								self.turnCodeToMySql();
 								self.turnCodeToLaravel5();
+								self.turnCodeToDjango2();
 							});
 
 							self.turnCodeToMySql();
 							self.turnCodeToLaravel5();
+							self.turnCodeToDjango2();
 
 							Prism.highlightAll();
 
@@ -865,9 +922,16 @@ class CreateExampleTables extends Migration {`;
 	]
 });
 
+const i18n = new VueI18n({
+	locale: "en",
+	messages: messages,
+	fallbackLocale: "en"
+});
+
 const vue = new Vue({
 	el: "#app",
 	router: router,
+	i18n: i18n,
 	mounted: function() {
 		M.AutoInit();
 	},

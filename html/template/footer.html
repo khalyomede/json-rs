@@ -4,24 +4,28 @@
 			<div class="col l6 s12">
 				<h5 class="white-text">RS/JSON</h5>
 				<p class="grey-text text-lighten-4">
-					Relational Schema over JSON.
+					{{ $t("footer.slogan") }}
 				</p>
 			</div>
 			<div class="col l4 offset-l2 s12">
-				<h5 class="white-text">Resources</h5>
+				<h5 class="white-text">{{ $t("footer.resources.text") }}</h5>
 				<ul>
 					<li>
 						<router-link
 							class="grey-text text-lighten-3"
 							to="/rs-json/example"
-							>Example</router-link
+							>{{
+								$t("footer.resources.menu.example")
+							}}</router-link
 						>
 					</li>
 					<li>
 						<router-link
 							class="grey-text text-lighten-3"
 							to="/rs-json/documentation"
-							>Documentation</router-link
+							>{{
+								$t("footer.resources.menu.documentation")
+							}}</router-link
 						>
 					</li>
 				</ul>
@@ -31,9 +35,7 @@
 	<div class="footer-copyright">
 		<div class="container">
 			<div class="row">
-				<div class="col s12">
-					RS/JSON and all the code is under MIT License.
-				</div>
+				<div class="col s12">{{ $t("footer.license") }}</div>
 			</div>
 		</div>
 	</div>
