@@ -1,0 +1,13 @@
+{
+	"name": "RS/JSON",
+	"description": "Relational Schema over JSON",
+	"short_name": "RS/JSON",
+	"start_url": "./rs-json",
+	"display": "minimal-ui",
+	"dir": "ltr",
+	"lang": "en",
+	"orientation": "any",
+	"theme_color": "#ee6e73",
+	"background_color": "#ee6e73",
+	"related_applications": [{ "platform": "web" }]
+}

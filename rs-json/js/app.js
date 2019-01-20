@@ -321,12 +321,21 @@ const router = new VueRouter({
 	}
 }`,
 							editor: "",
-							mySql: ""
+							mySql: "",
+							laravel5: "",
+							supportedCharsets: ["utf8", "utf8mb4", "iso88591"],
+							supportedTypes: [
+								"integer",
+								"float",
+								"string",
+								"datetime"
+							]
 						};
 					},
 					methods: {
 						onEditorInput: function(event) {
 							this.turnCodeToMySql();
+							this.turnCodeToLaravel5();
 						},
 						turnCodeToMySql: function() {
 							let mySql = "";
@@ -355,11 +364,6 @@ const router = new VueRouter({
 								"float",
 								"datetime"
 							].join(", ");
-							const supportedCharsets = [
-								"utf8",
-								"utf8mb4",
-								"iso88591"
-							];
 
 							if ("charset" in rsjson === false) {
 								this.mySql = `"charset" key is mandatory`;
@@ -371,10 +375,12 @@ const router = new VueRouter({
 								return;
 							}
 
-							if (!supportedCharsets.includes(rsjson.charset)) {
+							if (
+								!this.supportedCharsets.includes(rsjson.charset)
+							) {
 								this.mySql = `unsupported charset "${
 									rsjson.charset
-								}" (supported: ${supportedCharsets.join(
+								}" (supported: ${this.supportedCharsets.join(
 									", "
 								)})`;
 								return;
@@ -568,6 +574,253 @@ const router = new VueRouter({
 							}
 
 							this.mySql = mySql;
+						},
+						turnCodeToLaravel5: function() {
+							this.laravel5 = `use Illuminate\\Support\\Facades\\Schema;
+use Illuminate\\Database\\Schema\\Blueprint;
+use Illuminate\\Database\\Migrations\\Migration;
+
+class CreateExampleTables extends Migration {`;
+
+							let rsjson = "";
+
+							try {
+								rsjson = JSON.parse(this.editor.getValue());
+							} catch (exception) {
+								if (exception instanceof SyntaxError) {
+									this.laravel5 = exception.toString();
+								} else {
+									this.laravel5 = `Unknown error: ${exception.toString()}`;
+								}
+
+								return;
+							}
+
+							if ("charset" in rsjson === false) {
+								this.laravel5 = `key "schema" is mandatory`;
+
+								return;
+							}
+
+							if ("charset" in rsjson) {
+								if (rsjson.charset.constructor !== String) {
+									this.laravel5 = `key "schema" should be a string`;
+
+									return;
+								}
+
+								if (
+									!this.supportedCharsets.includes(
+										rsjson.charset
+									)
+								) {
+									const supported = this.supportedCharsets.join(
+										", "
+									);
+									this.laravel5 = `unsupported charset "${
+										rsjson.charset
+									}" (supported: ${supported})`;
+
+									return;
+								}
+							}
+
+							if ("schema" in rsjson === false) {
+								this.laravel5 = `No schema to interpret`;
+
+								return;
+							} else {
+								if (rsjson.schema.constructor !== Object) {
+									this.laravel5 = `key "schema" should be an object`;
+
+									return;
+								}
+							}
+
+							for (const modelName in rsjson.schema) {
+								const model = rsjson.schema[modelName];
+
+								if (model.constructor !== Object) {
+									this.laravel5 = `model "${modelName}" should be an object`;
+
+									return;
+								}
+
+								if ("properties" in model === false) {
+									this.laravel5 = `key "properties" in model "${modelName}" is mandatory`;
+
+									return;
+								}
+
+								if (model.properties.constructor !== Object) {
+									this.laravel5 = `key "properties" in model "${modelName}" should be an object`;
+
+									return;
+								}
+
+								let statements = [];
+
+								for (const propertyName in model.properties) {
+									const property =
+										model.properties[propertyName];
+
+									if ("incremented" in property) {
+										if (
+											property.incremented.constructor !==
+											Boolean
+										) {
+											this.laravel5 = `key "incremented" should be a boolean on property "${properyName}" of the model "${modelName}"`;
+
+											return;
+										}
+
+										statements.push(
+											`$table->increments('${propertyName}')`
+										);
+									}
+
+									if ("type" in property === false) {
+										this.laravel5 = `key "type" is missing in property "${propertyName}" of model "${modelName}"`;
+
+										return;
+									} else {
+										if (
+											property.type.constructor !== String
+										) {
+											this.laravel5 = `key "type" should be a string in the property "${propertyName}" of the model "${modelName}"`;
+
+											return;
+										} else if (
+											!this.supportedTypes.includes(
+												property.type
+											)
+										) {
+											this.laravel5 = `unsupported type "${
+												property.type
+											}" in the property "${propertyName}" of the model "${modelName}" (supported: ${this.supportedTypes.join(
+												", "
+											)})`;
+
+											return;
+										} else {
+											switch (property.type) {
+												case "string":
+													statements.push(
+														`$table->string('${propertyName}');`
+													);
+													break;
+												case "integer":
+													statements.push(
+														`$table->integer('${propertyName}');`
+													);
+													break;
+												case "float":
+													let maximum = 10;
+													let precision = 2;
+
+													if ("maximum" in property) {
+														if (
+															property.maximum
+																.constructor !==
+															Number
+														) {
+															this.laravel5 = `key "maximum" should be a number in the property "${propertyName}" of the model "${modelName}"`;
+
+															return;
+														}
+
+														maximum = Math.round(
+															property.maximum
+														);
+													}
+
+													if (
+														"precision" in property
+													) {
+														if (
+															property.precision
+																.constructor !==
+															Number
+														) {
+															this.laravel5 = `key "precision" should be a number in the property "${propertyName}" of the model "${modelName}"`;
+														}
+
+														precisoon = Math.round(
+															property.precision
+														);
+													}
+
+													statements.push(
+														`$table->decimal('${propertyName}', ${maximum}, ${precision});`
+													);
+													break;
+												case "datetime":
+													stataments.push(
+														`$table->dateTime('${propertyName}');`
+													);
+													break;
+											}
+										}
+									}
+								}
+
+								if ("uniques" in model) {
+									if (model.uniques.constructor !== Object) {
+										this.laravel5 = `key "uniques" should be an object in the model "${modelName}"`;
+
+										return;
+									}
+
+									console.log(model.uniques);
+
+									for (const uniqueName in model.uniques) {
+										const unique =
+											model.uniques[uniqueName];
+
+										if (unique.constructor !== Array) {
+											this.laravel5 = `unique index "${uniqueName}" should be an array in the model "${modelName}"`;
+
+											return;
+										}
+
+										const columns = unique
+											.map(function(column) {
+												return `'${column}'`;
+											})
+											.join(", ");
+
+										statements.push(
+											`$table->unique(${columns}, '${uniqueName}');`
+										);
+									}
+								}
+
+								if ("identifier" in model) {
+									if (
+										model.identifier.constructor !== Array
+									) {
+										this.laravel5 = `key "identifier" should be an array in the model "${modelName}"`;
+
+										return;
+									}
+
+									const columns = model.identifier
+										.map(function(column) {
+											return `'${column}'`;
+										})
+										.join(", ");
+
+									statements.push(
+										`$table->primary([${columns}]);`
+									);
+								}
+
+								this.laravel5 += `\n\tSchema::create('${modelName}', function(Blueprint $table): void {\n\t\t${statements.join(
+									"\n\t\t"
+								)}\n\t});\n`;
+							}
+
+							this.laravel5 += "\n}";
 						}
 					},
 					mounted: function() {
@@ -586,11 +839,15 @@ const router = new VueRouter({
 
 							self.editor.on("change", function(editor) {
 								self.turnCodeToMySql();
+								self.turnCodeToLaravel5();
 							});
 
 							self.turnCodeToMySql();
+							self.turnCodeToLaravel5();
 
 							Prism.highlightAll();
+
+							M.AutoInit();
 						});
 					}
 				});
