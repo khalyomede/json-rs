@@ -2,14 +2,14 @@
     <rs-spacer />
     <div class="col s12">
         <rs-breadcrumb>
-            <rs-breadcrumb-item to="/rs-json" text="Home" />
-            <rs-breadcrumb-item to="/rs-json/documentation" text="Documentation" />
-            <rs-breadcrumb-item to="/rs-json/documentation/charsets" text="Charsets" />
+            <rs-breadcrumb-item to="/rs-json" v-bind:text="$t('breadcrumb.home.text')" />
+            <rs-breadcrumb-item to="/rs-json/documentation" v-bind:text="$t('breadcrumb.documentation.text')" />
+            <rs-breadcrumb-item to="/rs-json/documentation/charsets" v-bind:text="$t('breadcrumb.documentation.charsets.text')" />
         </rs-breadcrumb>
     </div>
     <div class="col s12">
         <rs-paragraph>
-            RS/JSON supports a list of charsets in order to unify every variants on the plaform RS/JSON will be installed.
+            {{ $t('documentation.charsets.rsJsonSupportsCharsets') }}
         </rs-paragraph>
     </div>
     <div class="col s12 m4 l3 offset-m4 offset-l4">
@@ -18,7 +18,7 @@
                 <table class="highlight">
                     <thead>
                         <tr>
-                            <th class="center-align">Name</th>
+                            <th class="center-align">{{ $t('documentation.charsets.list.title') }}</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -36,7 +36,7 @@
     </div>
     <div class="col s12">
         <rs-paragraph>
-            Charsets can be set globally:
+            {{ $t('documentation.charsets.canBeSetGlobally') }}
         </rs-paragraph>
     </div>
     <div class="col s12 m8 l6 offset-m2 offset-l3">
@@ -53,7 +53,7 @@
     </div>
     <div class="col s12">
         <rs-paragraph>
-            Or per property:
+            {{ $t('documentation.charsets.orPerProperty') }}
         </rs-paragraph>
     </div>
     <div class="col s12 m8 l6 offset-m2 offset-l3">
@@ -78,9 +78,7 @@
         </rs-card>
     </div>
     <div class="col s12">
-        <rs-paragraph>
-            In such case, a <code>charset</code> set on any property will override the default charset.
-        </rs-paragraph>
+        <rs-paragraph v-html="$t('documentation.charsets.inSuchCase')"></rs-paragraph>
     </div>
     <rs-edit-proposal-fab href="/html/template/documentation/charsets.html" />
 </rs-container>

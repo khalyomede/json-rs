@@ -2,19 +2,19 @@
 		<rs-spacer />
 		<div class="col s12">
 			<rs-breadcrumb>
-				<rs-breadcrumb-item to="/rs-json/" text="Home" />
-				<rs-breadcrumb-item to="/rs-json/documentation" text="Documentation" />
+				<rs-breadcrumb-item to="/rs-json/" v-bind:text="$t('breadcrumb.home.text')" />
+				<rs-breadcrumb-item to="/rs-json/documentation" v-bind:text="$t('breadcrumb.documentation.text')" />
 			</rs-breadcrumb>
 		</div>
 		<rs-spacer />
 		<div class="col s12 m8 l6 offset-m2 offset-l3">
 			<div class="collection">
-				<rs-collection-item to="/rs-json/documentation/api" text="API" />
-				<rs-collection-item to="/rs-json/documentation/charsets" text="Charsets" />
-				<rs-collection-item to="/rs-json/documentation/guards" text="Guards" />
-				<rs-collection-item to="/rs-json/documentation/license" text="License" />
-				<rs-collection-item to="/rs-json/documentation/types" text="Types" />
-				<rs-collection-item to="/rs-json/documentation/version" text="Version" />
+				<rs-collection-item to="/rs-json/documentation/api" v-bind:text="$t('collection.api')" />
+				<rs-collection-item to="/rs-json/documentation/charsets" v-bind:text="$t('collection.charsets')" />
+				<rs-collection-item to="/rs-json/documentation/guards" v-bind:text="$t('collection.guards')" />
+				<rs-collection-item to="/rs-json/documentation/license" v-bind:text="$t('collection.license')" />
+				<rs-collection-item to="/rs-json/documentation/types" v-bind:text="$t('collection.types')" />
+				<rs-collection-item to="/rs-json/documentation/version" v-bind:text="$t('collection.version')" />
 			</div>
 		</div>
 	</div>

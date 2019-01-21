@@ -2,17 +2,15 @@
     <rs-spacer />
     <div class="col s12">
         <rs-breadcrumb>
-            <rs-breadcrumb-item to="/" text="Home" />
-            <rs-breadcrumb-item to="/try-it" text="Try it" />
+            <rs-breadcrumb-item to="/" v-bind:text="$t('breadcrumb.home.text')" />
+            <rs-breadcrumb-item to="/try-it" v-bind:text="$t('breadcrumb.tryIt.text')" />
         </rs-breadcrumb>
     </div>
     <div class="col s12">
         <rs-paragraph>
-            Write some RS/JSON and check how RS/JSON is turning into a code comprehensible by your favorites platform.
+            {{ $t('tryIt.writeSomeRsJson') }}
         </rs-paragraph>
-        <p>
-            This is a simplified version of RS/JSON. You can use <code>uniques</code>, <code>type</code>, <code>identifier</code> and <code>charset</code> attributes. Have fun!
-        </p>
+        <p v-html="$t('tryIt.simplifiedVersionOfRsJson')"></p>
     </div>
     <div class="col s12 m6 l6">
         <rs-card>
@@ -35,7 +33,7 @@
                 </div>
                 <div id="laravel-5">
                     <pre><code class="language-PHP">{{ laravel5 }}</code></pre>
-                    <i>RS/JSON can also exports to <a href="https://laravel.com/docs/master/eloquent">Eloquent</a> models as well.</i>
+                    <i v-html="$t('tryIt.canAlsoExportToEloquent')"></i>
                 </div>
             </div>
         </div>

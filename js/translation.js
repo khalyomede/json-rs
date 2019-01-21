@@ -20,6 +20,7 @@ const messages = {
 		home: {
 			title: "Relational schema over JSON",
 			gettingStartedButton: "Getting started",
+			readTheDocumentationButton: "Read the documentation",
 			singleSourceOfTruth: {
 				title: "Single source of truth",
 				text:
@@ -38,6 +39,57 @@ const messages = {
 				title: "Share your recipes",
 				text:
 					"Because it uses versioning and licensing, you can finally share your recipes. Did you ever whished to blog about your best way to modelize a particular business concept? How many times did you spent the last time you saw a great way to handle a particular business logic?"
+			}
+		},
+		"404": {
+			title: "Page not found",
+			text:
+				"Seems like we are bad at coding internet or this page really does not exist."
+		},
+		breadcrumb: {
+			home: {
+				text: "Home"
+			},
+			documentation: {
+				text: "Documentation",
+				charsets: {
+					text: "Charsets"
+				}
+			},
+			tryIt: {
+				text: "Try it"
+			}
+		},
+		collection: {
+			api: "API",
+			charsets: "Charsets",
+			guards: "Guards",
+			license: "License",
+			types: "Types",
+			version: "Version"
+		},
+		editProposalFab: {
+			text: "Propose a change"
+		},
+		tryIt: {
+			writeSomeRsJson:
+				"Write some RS/JSON and check how RS/JSON is turning into a code comprehensible by your favorites platform.",
+			simplifiedVersionOfRsJson:
+				"This is a simplified version of RS/JSON. You can use <code>uniques</code>, <code>type</code>, <code>identifier</code> and <code>charset</code> attributes. Have fun!",
+			canAlsoExportToEloquent:
+				'RS/JSON can also exports to <a href="https://laravel.com/docs/master/eloquent">Eloquent</a> models as well.'
+		},
+		documentation: {
+			charsets: {
+				rsJsonSupportsCharsets:
+					"RS/JSON supports a list of charsets in order to unify every variants on the plaform RS/JSON will be installed.",
+				list: {
+					title: "Name"
+				},
+				canBeSetGlobally: "Charsets can be set globally:",
+				orPerProperty: "Or per property:",
+				inSuchCase:
+					"In such case, a <code>charset</code> set on any property will override the default charset."
 			}
 		}
 	},
@@ -61,8 +113,9 @@ const messages = {
 			}
 		},
 		home: {
-			title: "Schéma Relationnel basé sur JSON",
+			title: "Schéma relationnel basé sur JSON",
 			gettingStartedButton: "Démarrer",
+			readTheDocumentationButton: "Lire la documentation",
 			singleSourceOfTruth: {
 				title: "Source centrale de votre réflexion",
 				text:
@@ -81,6 +134,58 @@ const messages = {
 				title: "Partagez vos trouvailles",
 				text:
 					"Parce que RS/JSON utilise du versioning et permet de mentionner une licence, vous pouvez enfin partagez vos meilleurs compositions. N'avez vous jamais souhaiter partager la meileure façon selon vous de modéliser un concept en particulier ? Combien de temps avez vous passer à adapter votre architecture la dernière fois que vous avez trouvé une bonne façon de traiter un cas business ?"
+			}
+		},
+		"404": {
+			title: "Page introuvable",
+			text:
+				"Soit on est mauvais à coder l'internet ou votre page n'existe vraiment pas."
+		},
+		breadcrumb: {
+			home: {
+				text: "Accueil"
+			},
+			documentation: {
+				text: "Documentation",
+				charsets: {
+					text: "Jeu de caractères"
+				}
+			},
+			tryIt: {
+				text: "Essayez"
+			}
+		},
+		collection: {
+			api: "API",
+			charsets: "Jeu de caractères",
+			guards: "Gardes",
+			license: "Licence",
+			types: "Types",
+			version: "Version"
+		},
+		editProposalFab: {
+			text: "Proposer une amélioration"
+		},
+		tryIt: {
+			writeSomeRsJson:
+				"Ecrivez du RS/JSON and regardez comment ce code est transformé en un code compréhensible sur une de vos plateformes favorites.",
+			simplifiedVersionOfRsJson:
+				"C'est une version simplifié de RS/JSON. Vous pouvez utiliser les attributs <code>uniques</code>, <code>type</code>, <code>identifier</code> et <code>charset</code>. Amusez vous bien !",
+			canAlsoExportToEloquent:
+				'RS/JSON peut également être exporté pour créer des modèles <a href="https://laravel.com/docs/master/eloquent">Eloquent</a>.'
+		},
+		documentation: {
+			charsets: {
+				rsJsonSupportsCharsets:
+					"RS/JSON supporte une liste de jeu de caractères afin d'unifier toutes les variantes sur la plateform sur laquelle RS/JSON va être installé.",
+				list: {
+					title: "Nom"
+				},
+				canBeSetGlobally:
+					"Le jeu de caractère peut être configuré globalement",
+				orPerProperty: "Ou par propriétés:",
+				inSuchCase:
+					"Dans ce cas, l'attribut <code>charset</code> configuré au niveau d'une propriété écrasera la configuration globale."
 			}
 		}
 	}

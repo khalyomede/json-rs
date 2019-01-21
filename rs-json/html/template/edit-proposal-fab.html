@@ -3,7 +3,7 @@
 		v-bind:href="'https://github.com/khalyomede/rs-json/edit/gh-pages/rs-json' + href"
 		class="btn-floating btn-large white tooltipped"
 		data-position="left"
-		data-tooltip="Propose a change"
+		v-bind:data-tooltip="$t('editProposalFab.text')"
 	>
 		<i class="large material-icons black-text">mode_edit</i>
 	</a>
