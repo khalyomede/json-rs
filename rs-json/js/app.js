@@ -283,6 +283,13 @@ const router = new VueRouter({
 			}
 		},
 		{
+			name: "documentation-uniqueness",
+			path: "/rs-json/documentation/uniqueness",
+			component: function(resolve, reject) {
+				template(resolve, reject, "documentation/uniqueness");
+			}
+		},
+		{
 			name: "example",
 			path: "/rs-json/example",
 			component: function(resolve, reject) {

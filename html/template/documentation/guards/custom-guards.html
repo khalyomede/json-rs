@@ -1,126 +1,125 @@
 <rs-container>
-        <rs-spacer />
-        <div class="col s12">
-            <rs-breadcrumb>
-                <rs-breadcrumb-item to="/rs-json" text="Home" />
-                <rs-breadcrumb-item to="/rs-json/documentation" text="Documentation" />
-                <rs-breadcrumb-item to="/rs-json/documentation/guards" text="Guards" />
-                <rs-breadcrumb-item to="/rs-json/documentation/guards/custom-guards" text="Custom guards" />
-            </rs-breadcrumb>
-        </div>
-        <div class="col s12">
-            <rs-paragraph>Custom guards can be created by you, the end developer, to extend guards in case <router-link to="/rs-json/documentation/guards/native-guards">native guards</router-link> are not enough.</rs-paragraph>
-            <rs-paragraph>Here is a basic example of new guard: longitude (<a href="https://en.wikipedia.org/wiki/Longitude" target="blank">longitudes</a> are floats between -180 and 180 decimal degrees).</rs-paragraph>
-        </div>
-        <div class="col s12">
-            <div class="card">
-                <div class="card-tabs">
-                    <ul class="tabs tabs-fixed-width">
-                    <li class="tab"><a href="#simple-guard-php-7-2" class="active">PHP 7.2</a></li>
-                    <li class="tab"><a href="#simple-guard-nodejs">NodeJS</a></li>
-                    <li class="tab"><a href="#simple-guard-python">Python 3</a></li>
-                    </ul>
-                </div>
-                <div class="card-content grey lighten-4">
-                    <div id="simple-guard-php-7-2">
-                        <pre><code class="language-PHP">
+    <rs-spacer />
+    <div class="col s12">
+        <rs-breadcrumb>
+            <rs-breadcrumb-item to="/rs-json" text="Home" />
+            <rs-breadcrumb-item to="/rs-json/documentation" text="Documentation" />
+            <rs-breadcrumb-item to="/rs-json/documentation/guards" text="Guards" />
+            <rs-breadcrumb-item to="/rs-json/documentation/guards/custom-guards" text="Custom guards" />
+        </rs-breadcrumb>
+    </div>
+    <div class="col s12">
+        <rs-paragraph>Custom guards can be created by you, the end developer, to extend guards in case <router-link to="/rs-json/documentation/guards/native-guards">native guards</router-link> are not enough.</rs-paragraph>
+        <rs-paragraph>Here is a basic example of new guard: longitude (<a href="https://en.wikipedia.org/wiki/Longitude" target="blank">longitudes</a> are floats between -180 and 180 decimal degrees).</rs-paragraph>
+    </div>
+    <div class="col s12">
+        <div class="card">
+            <div class="card-tabs">
+                <ul class="tabs tabs-fixed-width">
+                <li class="tab"><a href="#simple-guard-php-7-2" class="active">PHP 7.2</a></li>
+                <li class="tab"><a href="#simple-guard-nodejs">NodeJS</a></li>
+                <li class="tab"><a href="#simple-guard-python">Python 3</a></li>
+                </ul>
+            </div>
+            <div class="card-content grey lighten-4">
+                <div id="simple-guard-php-7-2">
+                    <rs-code lang="PHP">
 use RsJson\RsJson;
 
 if (!RsJson::hasGuard('longitude')) {
-  RsJson::addGuard('longitude', function(float $value): bool {
-    return -180 <= $value && $value <= 180;
-  });
+    RsJson::addGuard('longitude', function(float $value): bool {
+        return -180 <= $value && $value <= 180;
+    });
 }
 </rs-code>
-                    </div>
-                    <div id="simple-guard-nodejs">
-                        <pre><code class="language-javascript">
+                </div>
+                <div id="simple-guard-nodejs">
+                    <rs-code lang="javascript">
 const RsJson = require('rs-json');
 // import * as RsJson from 'rs-json';
 
 if (!RsJson.hasGuard('longitude')) {
-  RsJson.addGuard('longitude', value => -180 <= value && value <= 180);
+    RsJson.addGuard('longitude', value => -180 <= value && value <= 180);
 }
 </rs-code>
-                    </div>
-                    <div id="simple-guard-python">
-                        <pre><code class="language-python">
+                </div>
+                <div id="simple-guard-python">
+                    <rs-code lang="python">
 from rsjson import RsJson
 
 if not RsJson.has_guard('longitude'):
-  RsJson.add_guard('longitude', lambda value: -180 <= value and value <= 180)
+    RsJson.add_guard('longitude', lambda value: -180 <= value and value <= 180)
 </rs-code>
-                    </div>
                 </div>
             </div>
         </div>
-        <div class="col s12">
-            <rs-paragraph>Another more complex example: <code>before:field</code>, which check if a property (date) is before another property.</rs-paragraph>
-        </div>
-        <div class="col s12">
-            <div class="card">
-                <div class="card-tabs">
-                    <ul class="tabs tabs-fixed-width">
+    </div>
+    <div class="col s12">
+        <rs-paragraph>Another more complex example: <code>before:field</code>, which check if a property (date) is before another property.</rs-paragraph>
+    </div>
+    <div class="col s12">
+        <div class="card">
+            <div class="card-tabs">
+                <ul class="tabs tabs-fixed-width">
                     <li class="tab"><a href="#complex-guard-php-7-2" class="active">PHP 7.2</a></li>
                     <li class="tab"><a href="#complex-guard-nodejs">NodeJS</a></li>
                     <li class="tab"><a href="#complex-guard-python">Python 3</a></li>
-                    </ul>
-                </div>
-                <div class="card-content grey lighten-4">
-                    <div id="complex-guard-php-7-2">
-                        <pre><code class="language-PHP">
+                </ul>
+            </div>
+            <div class="card-content grey lighten-4">
+                <div id="complex-guard-php-7-2">
+                    <rs-code lang="PHP">
 use RsJson\RsJson;
 use DateTime;
 use InvalidArgumentException;
 
 if(!RsJson::hasGuard('before')) {
-  RsJson::addGuard('before', function(string $value, string $parameters, object $property, array $properties): bool {
-    if (empty($parameters)) {
-      throw new InvalidArgumentException('guard "before" expects a parameter');
-    }
+    RsJson::addGuard('before', function(string $value, string $parameters, object $property, array $properties): bool {
+        if (empty($parameters)) {
+            throw new InvalidArgumentException('guard "before" expects a parameter');
+        }
 
-    $propertiesNames = array_map(function($property) {
-      return $property->name;
-    }, $properties);
+        $propertiesNames = array_map(function($property) {
+            return $property->name;
+        }, $properties);
 
-    if (!in_array($parameters, $propertiesNames)) {
-      throw new InvalidArgumentException("missing property $parameters on model {$property->model}");
-    }
+        if (!in_array($parameters, $propertiesNames)) {
+            throw new InvalidArgumentException("missing property $parameters on model {$property->model}");
+        }
 
-    return (new DateTime($value)) < (new DateTime($properties[$parameters]->value));
-  });
+        return (new DateTime($value)) < (new DateTime($properties[$parameters]->value));
+    });
 }
 </rs-code>
-                    </div>
-                    <div id="complex-guard-nodejs">
-                        <pre><code class="language-javascript">
+                </div>
+                <div id="complex-guard-nodejs">
+                    <rs-code lang="javascript">
 const RsJson = require('rs-json');
 // import * as RsJson from 'rs-json';
 
 if (!RsJson.hasGuard('before')) {
-  RsJson.addGuard('before', (value, parameters, property, properties) => {
-    if(!parameters) {
-      throw new Error('guard "before" expects a parameter');
-    }
+    RsJson.addGuard('before', (value, parameters, property, properties) => {
+        if(!parameters) {
+            throw new Error('guard "before" expects a parameter');
+        }
 
-    if(!properties.map(property => property.name).includes(parameters)) {
-      throw new Error(`missing property ${parameters} on model ${property.model}`)
-    }
+        if(!properties.map(property => property.name).includes(parameters)) {
+            throw new Error(`missing property ${parameters} on model ${property.model}`)
+        }
 
-    return new Date(value) < new Date(properties[parameters].value)
-  });
+        return new Date(value) < new Date(properties[parameters].value)
+    });
 }
 </rs-code>
-                    </div>
-                    <div id="complex-guard-python">
-                        <pre><code class="language-python">
+                </div>
+                <div id="complex-guard-python">
+                    <rs-code lang="python">
 from rsjson import RsJson
 from dateutil.parser import parse
 
 if not RsJson.has_guard('before'):
-  RsJson.add_guard('before', lambda value, parameters, prop, props: parse(value) < parse(props[parameters].value))
+    RsJson.add_guard('before', lambda value, parameters, prop, props: parse(value) < parse(props[parameters].value))
 </rs-code>
-                    </div>
                 </div>
             </div>
         </div>

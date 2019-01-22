@@ -64,3 +64,47 @@ main {
 .CodeMirror-line {
 	font-family: "Fira Mono", monospace !important;
 }
+
+.on-hover-cursor-pointer:hover {
+	cursor: pointer;
+}
+
+.clear-xl {
+	clear: none;
+}
+
+.clear-l {
+	clear: none;
+}
+
+.clear-m {
+	clear: none;
+}
+
+.clear-s {
+	clear: none;
+}
+
+@media screen and (max-width: 600px) {
+	.clear-s {
+		clear: both;
+	}
+}
+
+@media screen and (min-width: 601px) and (max-width: 992px) {
+	.clear-m {
+		clear: both;
+	}
+}
+
+@media screen and (min-width: 993px) and (max-width: 1200px) {
+	.clear-l {
+		clear: both;
+	}
+}
+
+@media screen and (min-width: 1201px) {
+	.clear-xl {
+		clear: both;
+	}
+}

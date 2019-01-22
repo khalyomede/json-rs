@@ -2,14 +2,14 @@
         <rs-spacer />
         <div class="col s12">
             <rs-breadcrumb>
-                <rs-breadcrumb-item to="/rs-json" text="Home" />
-                <rs-breadcrumb-item to="/rs-json/example" text="Example" />
+                <rs-breadcrumb-item to="/rs-json" v-bind:text="$t('breadcrumb.home.text')" />
+                <rs-breadcrumb-item to="/rs-json/example" v-bind:text="$t('breadcrumb.example.text')" />
             </rs-breadcrumb>
         </div>
         <rs-spacer />
         <div class="col s12">
             <p class="flow-text">
-                In order to understand how RS/JSON takes place in your IT, we will take inspiration from a real life example. Our business today: a book store.
+                {{ $t('example.inOrderToUnderstand') }}
             </p>
         </div>
         <rs-spacer />
@@ -21,23 +21,23 @@
         <rs-spacer />
         <div class="col s12">
             <p class="flow-text">
-                One of the problem with diagrams is that they lack of information. Is the ISBN in norm ISBN-10 or ISBN-13? Does the return date can have a value lower than the borrowed date?
+                {{ $t('example.problemsWithDiagrams') }}
             </p>
             <p class="flow-text">
-                RS/JSON will be able to tackle those unmodelizable constraints. Let us agree on a couple of statemens first:
+                {{ $t('example.howRsJsonTackleDiagramsProblems') }}
             </p>
             <ol>
-                <li>A <b>book</b> must have a name and an ISBN (norm ISBN-13)</li>
-                <li>A <b>book</b> must have only one author</li>
-                <li>An <b>Author</b> must have a name and an age (he should be adult)</li>
-                <li>An <b>Author</b> can have many books</li>
-                <li>An <b>Order</b> must have a date of borrowing and returning</li>
-                <li>An <b>Book</b> can be ordered many times, and an <b>Order</b> can have many books</li>
+                <li v-html="$t('example.statement.bookIsbnName')"></li>
+                <li v-html="$t('example.statement.bookAuthor')"></li>
+                <li v-html="$t('example.statement.authorNameAge')"></li>
+                <li v-html="$t('example.statement.authorBooks')"></li>
+                <li v-html="$t('example.statement.orderDateBorrowingReturning')"></li>
+                <li v-html="$t('example.statement.bookOrder')"></li>
             </ol>
         </div>
         <div class="col s12">
             <p class="flow-text">
-                Fair enough, we can move on and create our diagram. Let us start with modelizing books:
+                {{ $t('example.fairEnough') }}
             </p>
         </div>
         <rs-spacer />
@@ -73,16 +73,16 @@
         </div>
         <div class="col s12">
             <p class="flow-text">
-                Good start. Remember what we stated on the ISBN?
+                {{ $t('example.goodStart') }}
             </p>
         </div>
         <div class="col s12">
             <blockquote class="flow-text">
-                <i>[...] and an ISBN (norm <b>ISBN-13</b>)</i>
+                <i v-html="$t('example.goodStartQuote')"></i>
             </blockquote>
         </div>
         <div class="col s12">
-            <rs-paragraph>This means the ISBN should have a particular form and is checkable (more information on the <a href="https://en.wikipedia.org/wiki/International_Standard_Book_Number#ISBN-13_check_digit_calculation" target="blank">wikipedia page</a>). To sum it up, exactly 17 characters (including dashes), and some control checks. Sounds like guards are the men for the job:</rs-paragraph>
+            <rs-paragraph v-html="$t('example.thisMeansIsbnParticularForm')"></rs-paragraph>
         </div>
         <div class="col s12 m10 l8 offset-m1 offset-l2">
             <rs-card>
@@ -114,10 +114,10 @@
         </div>
         <div class="col s12">
             <p class="flow-text">
-                This guard is coded in your back-end software. Since it is not part of the <router-link to="/rs-json/documentation/guards/native-guards">native guards</router-link>, you or your collegues will have to code it.
+                {{ $t('example.thisGuardIsCodedInYourBackend') }}
             </p>
-            <rs-paragraph>Guards are performing application-side, and are great to ensure data coming from your apps are getting clean before being inserted or updated.</rs-paragraph>
-            <rs-paragraph>Now, we could also inform the database that our isbn has a maximum length of 17 character, using the <code>maximum</code> key on this property. Or we could use a <router-link to="/rs-json/documentation/types/custom-types">custom type</router-link> to factorize all those parameters.</rs-paragraph>
+            <rs-paragraph>{{ $t('example.guardArePerformingServerSide') }}</rs-paragraph>
+            <rs-paragraph>{{ $t('example.weCouldAlsoHaveTheDatabase') }}</rs-paragraph>
         </div>
         <div class="col s12 m10 l8 offset-m1 offset-l2">
             <rs-card>
