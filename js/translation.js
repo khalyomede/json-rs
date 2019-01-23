@@ -105,6 +105,40 @@ const messages = {
 				orPerProperty: "Or per property:",
 				inSuchCase:
 					"In such case, a <code>charset</code> set on any property will override the default charset."
+			},
+			menu: {
+				api: {
+					title: "API",
+					text: "Learn how RS/JSON is structured in detail."
+				},
+				charsets: {
+					title: "Charsets",
+					text:
+						"Encode properly your data using a list of supported charsets."
+				},
+				guards: {
+					title: "Guards",
+					text:
+						"Set up quality rules and improve your data reliability."
+				},
+				license: {
+					title: "License",
+					text: "Share with the community or protect your schema."
+				},
+				types: {
+					title: "Types",
+					text:
+						"Categorize your field, favorize reusability, abstract your business."
+				},
+				version: {
+					title: "Version",
+					text:
+						"Use schema difference to apply changes on your relational schema."
+				},
+				uniqueness: {
+					title: "Uniqueness",
+					text: "Make your data more relevant by banning duplicate."
+				}
 			}
 		}
 	},
@@ -216,6 +250,42 @@ const messages = {
 				orPerProperty: "Ou par propriétés:",
 				inSuchCase:
 					"Dans ce cas, l'attribut <code>charset</code> configuré au niveau d'une propriété écrasera la configuration globale."
+			},
+			menu: {
+				api: {
+					title: "API",
+					text: "Apprennez comment RS/JSON est structuré en détail."
+				},
+				charsets: {
+					title: "Jeu de caractères",
+					text:
+						"Encodez correctement vos données grâce à une liste préféfinie de jeu de caractères."
+				},
+				guards: {
+					title: "Gardes",
+					text:
+						"Mettez en place des règles de qualité afin d'améliorer la fiabilité de vos données."
+				},
+				license: {
+					title: "Licence",
+					text:
+						"Partagez avec la communauté ou protégez votre schéma."
+				},
+				types: {
+					title: "Types",
+					text:
+						"Catégorisez vos champs, favorisez la réutilisation, et synthétisez votre métier."
+				},
+				version: {
+					title: "Version",
+					text:
+						"Usez de la différence de schéma afin d'appliquez des changements sur votre schéma relationnel."
+				},
+				uniqueness: {
+					title: "Unicité",
+					text:
+						"Rendez vos données plus pertinentes en interdisant les doublons."
+				}
 			}
 		}
 	}

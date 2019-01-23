@@ -13,4 +13,102 @@
         </rs-paragraph>
         <rs-paragraph>It is so linked that in fact RS/JSON will turn this directive into an database unique constraint. Let us see a simple example.</rs-paragraph>
     </div>
+    <div class="col s12">
+        <rs-card>
+            <div slot="title">book-store.rs.json</div>
+            <div slot="content">
+                <rs-code lang="json">{
+  "version": "0.1.0",
+  "license": "MIT",
+  "charset": "utf8",
+  "schema": {
+    "book": {
+      "uniques": {
+        "unique_book_isbn": ["isbn"]
+      },
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "isbn": {
+          "type": "isbn"
+        }
+      }
+    }
+  }            
+}</rs-code>
+            </div>
+        </rs-card>
+    </div>
+    <div class="col s12">
+        <rs-paragraph>
+            We introduced a <code>uniques</code> attributes which holds, for each key, an array of properties to use for a particular unique constraint.
+        </rs-paragraph>
+        <rs-paragraph>
+            Here, we state that a book cannot have 2 identical ISBN, which is actually natural because ISBN is one of the tool to help identify a book.
+        </rs-paragraph>
+        <rs-paragraph>
+            The <code>uniques</code> attribute can contain constraints referencing multiple properties. Here is another example.
+        </rs-paragraph>
+    </div>
+    <div class="col s12">
+        <rs-card>
+            <div slot="title">book-store.rs.json</div>
+            <div slot="content">
+                <rs-code lang="json">{
+  "version": "0.1.0",
+  "license": "MIT",
+  "charset": "utf8",
+  "schema": {
+    "author": {
+      "uniques": {
+        "unique_author_name": ["first_name", "last_name"]
+      },
+      "first_name": {
+        "type": "string"
+      },
+      "last_name": {
+        "type": "string"
+      }
+    }
+  }            
+}</rs-code>
+            </div>
+        </rs-card>
+    </div>
+    <div class="col s12">
+        <rs-paragraph>
+            If you need to give a particular length when indexing a property in a unique constraint, you can do it like so.
+        </rs-paragraph>
+    </div>
+    <div class="col s12">
+        <rs-card>
+            <div slot="title">book-store.rs.json</div>
+            <div slot="content">
+                <rs-code lang="json">{
+  "version": "0.1.0",
+  "license": "MIT",
+  "charset": "utf8",
+  "schema": {
+    "author": {
+      "uniques": {
+        "unique_author_name": ["first_name:255", "last_name:255"]
+      },
+      "first_name": {
+        "type": "string"
+      },
+      "last_name": {
+        "type": "string"
+      }
+    }
+  }            
+}</rs-code>
+            </div>
+        </rs-card>
+    </div>
+    <div class="col s12">
+        <rs-paragraph>
+            The instruction <code>"first_name:255"</code> will instruct your storage engine to create an index on the first 255 character of this property. It can be convenient in certain case to manage this index length.
+        </rs-paragraph>
+    </div>
 </rs-container>
