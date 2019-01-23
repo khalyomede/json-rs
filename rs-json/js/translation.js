@@ -19,8 +19,8 @@ const messages = {
 		},
 		home: {
 			title: "Relational schema over JSON",
-			gettingStartedButton: "Getting started",
-			readTheDocumentationButton: "Read the documentation",
+			exampleButton: "Examples",
+			documentationButton: "documentation",
 			singleSourceOfTruth: {
 				title: "Single source of truth",
 				text:
@@ -106,38 +106,6 @@ const messages = {
 				inSuchCase:
 					"In such case, a <code>charset</code> set on any property will override the default charset."
 			}
-		},
-		example: {
-			inOrderToUnderstand:
-				"In order to understand how RS/JSON takes place in your IT, we will take inspiration from a real life example. Our business today: a book store.",
-			problemsWithDiagrams:
-				"One of the problem with diagrams is that they lack of information. Is the ISBN in norm ISBN-10 or ISBN-13? Does the return date can have a value lower than the borrowed date?",
-			howRsJsonTackleDiagramsProblems:
-				"RS/JSON will be able to tackle those unmodelizable constraints. Let us agree on a couple of statemens first:",
-			statement: {
-				bookIsbnName:
-					"A <b>book</b> must have a name and an ISBN (norm ISBN-13)",
-				bookAuthor: "A <b>book</b> must have only one author",
-				authorNameAge:
-					"An <b>Author</b> must have a name and an age (he should be adult)",
-				authorBooks: "An <b>Author</b> can have many books",
-				orderDateBorrowingReturning:
-					"An <b>Order</b> must have a date of borrowing and returning",
-				bookOrder:
-					"An <b>Book</b> can be ordered many times, and an <b>Order</b> can have many books"
-			},
-			fairEnough:
-				"Fair enough, we can move on and create our diagram. Let us start with modelizing books:",
-			goodStart: "Good start. Remember what we stated on the ISBN?",
-			goodStartQuote: "[...] and an ISBN (norm <b>ISBN-13</b>)",
-			thisMeansIsbnParticularForm:
-				'This means the ISBN should have a particular form and is checkable (more information on the <a href="https://en.wikipedia.org/wiki/International_Standard_Book_Number#ISBN-13_check_digit_calculation" target="blank">wikipedia page</a>). To sum it up, exactly 17 characters (including dashes), and some control checks. Sounds like guards are the men for the job:',
-			thisGuardIsCodedInYourBackend:
-				"This guard is coded in your back-end software. Since it is not part of the native guards, you or your collegues will have to code it.",
-			guardArePerformingServerSide:
-				"Guards are performing application-side, and are great to ensure data coming from your apps are getting clean before being inserted or updated.",
-			weCouldAlsoHaveTheDatabase:
-				"Now, we could also inform the database that our isbn has a maximum length of 17 character, using the <code>maximum</code> key on this property. Or we could use a custom type to factorize all those parameters."
 		}
 	},
 	fr: {
@@ -161,8 +129,8 @@ const messages = {
 		},
 		home: {
 			title: "Schéma relationnel basé sur JSON",
-			gettingStartedButton: "Démarrer",
-			readTheDocumentationButton: "Lire la documentation",
+			exampleButton: "Exemples",
+			documentationButton: "documentation",
 			singleSourceOfTruth: {
 				title: "Source centrale de votre réflexion",
 				text:
