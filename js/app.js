@@ -301,6 +301,13 @@ const router = new VueRouter({
 			}
 		},
 		{
+			name: "example-single-model",
+			path: "/rs-json/example/single-model",
+			component: function(resolve, reject) {
+				template(resolve, reject, "example/single-model");
+			}
+		},
+		{
 			name: "try-it",
 			path: "/rs-json/try-it",
 			component: function(resolve, reject) {

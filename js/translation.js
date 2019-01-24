@@ -72,7 +72,10 @@ const messages = {
 				text: "Try it"
 			},
 			example: {
-				text: "Example"
+				text: "Example",
+				singleModel: {
+					text: "Single model"
+				}
 			}
 		},
 		collection: {
@@ -163,6 +166,11 @@ const messages = {
 					text:
 						"Learn how to separate your schema in small pieces to improve maintainability."
 				},
+				factorize: {
+					title: "Factorize",
+					text:
+						"Use shortcuts like custom types to speed up your developpment."
+				},
 				inheritance: {
 					title: "Inheritance",
 					text:
@@ -172,6 +180,31 @@ const messages = {
 					title: "Wrap up",
 					text:
 						"All you need to know, in one complete example. Conceptualizing a book store and its business challenges."
+				}
+			},
+			singleModel: {
+				introduction:
+					"The code below shows how to modelize our book model.",
+				statements:
+					"A book is defined by a unique identifier, a name, and an ISBN (which, by definition, is unique).",
+				explainationIntroduction:
+					"We can break this in 3 parts: <code>identifier</code>, <code>uniques</code> and <code>properties</code>.",
+				explaination: {
+					identifier: {
+						title: "Identifier",
+						text:
+							"The <code>identifier</code> attribute will instruct the storage engine to create a primary key for the desired columns. This will automatically make the columns uniques, so our <code>id</code> property can be used as a reliable unique identifier."
+					},
+					uniques: {
+						title: "Uniques",
+						text:
+							"The <code>uniques</code> attribute contains as many unique instructions as desired."
+					},
+					properties: {
+						title: "Properties",
+						text:
+							"As you can see, properties are naturally written with RS/JSON. It is shipped with native types and other attribute to customize your column (like for <code>isbn</code>)."
+					}
 				}
 			}
 		}
@@ -250,7 +283,10 @@ const messages = {
 				text: "Essayez"
 			},
 			example: {
-				text: "Exemple"
+				text: "Exemple",
+				singleModel: {
+					text: "Modèle simple"
+				}
 			}
 		},
 		collection: {
@@ -344,16 +380,27 @@ const messages = {
 					text:
 						"Apprenez comment séparer vos schéma dans des fichiers distincts pour améliorer la maintenabilité."
 				},
+				factorize: {
+					title: "Factoriser",
+					text:
+						"Utiliser des raccourcis comme les types customisés pour accélérer votre production."
+				},
 				inheritance: {
 					title: "Héritage",
 					text:
-						"Maîtrisez un des concepts les plus novateurs de RS/JSON et apprenez à graduellement améliorer votre schéma au fil des mises à jours de votre schéma."
+						"Maîtrisez un des concepts les plus novateurs de RS/JSON et apprenez à graduellement améliorer votre schéma au fil de vos mises à jours."
 				},
 				wrapUp: {
 					title: "Résumé",
 					text:
 						"Tout ce dont vous avez besoin de savoir, en un exemple complet. Au menu, conceptualisatin d'une librairie et tous ses défis business."
 				}
+			},
+			singleModel: {
+				introduction:
+					"Un livre est défini par un identifiant unique, un nom, et un ISBN (qui par définition, est unique).",
+				statements:
+					"Le code ci-dessous montre comment nous pourrions modéliser nos livres"
 			}
 		}
 	}

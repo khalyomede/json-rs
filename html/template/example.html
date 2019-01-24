@@ -9,54 +9,62 @@
 	<rs-spacer />
 	<div class="col s12">
 		<div class="masonry xl3 l3 m4 s12">
-			<div class="hoverable card deep-purple">
+			<router-link tag="div" to="/rs-json/example/single-model" class="hoverable on-hover-cursor-pointer card deep-purple">
 				<div class="card-content">
 					<span class="card-title white-text">{{ $t('example.menu.singleModel.title') }}</span>
 					<p class="deep-purple-text text-lighten-4">
 						{{ $t('example.menu.singleModel.text') }}
 					</p>
 				</div>
-			</div>
-			<div class="hoverable card green">
+			</router-link>
+			<router-link tag="div" to="/rs-json/example/one-to-many-relationship" class="hoverable on-hover-cursor-pointer card green">
 				<div class="card-content">
 					<span class="card-title white-text">{{ $t('example.menu.oneToManyRelationship.title') }}</span>
 					<p class="green-text text-lighten-4">
 						{{ $t('example.menu.oneToManyRelationship.text') }}
 					</p>
 				</div>
-			</div>
-			<div class="hoverable card deep-orange">
+			</router-link>
+			<router-link tag="div" to="/rs-json/example/many-to-many-relationship" class="hoverable on-hover-cursor-pointer card deep-orange">
 				<div class="card-content">
 					<span class="card-title white-text">{{ $t('example.menu.manyToManyRelationship.title') }}</span>
 					<p class="deep-orange-text text-lighten-4">
 						{{ $t('example.menu.manyToManyRelationship.text') }}
 					</p>
 				</div>
-			</div>
-			<div class="hoverable card indigo">
+			</router-link>
+			<router-link tag="div" to="/rs-json/example/splitted-schema" class="hoverable on-hover-cursor-pointer card indigo">
 				<div class="card-content">
 					<span class="card-title white-text">{{ $t('example.menu.splittedSchema.title') }}</span>
 					<p class="indigo-text text-lighten-4">
 						{{ $t('example.menu.splittedSchema.text') }}
 					</p>
 				</div>
-			</div>
-			<div class="hoverable card brown">
+			</router-link>
+			<router-link tag="div" to="/rs-json/example/factorize" class="hoverable on-hover-cursor-pointer card pink">
+				<div class="card-content">
+					<div class="card-title white-text">{{ $t('example.menu.factorize.title') }}</div>
+					<p class="pink-text text-lighten-4">
+						{{ $t('example.menu.factorize.text') }}
+					</p>
+				</div>
+			</router-link>
+			<router-link tag="div" to="/rs-json/example/inheritance" class="hoverable on-hover-cursor-pointer card brown">
 				<div class="card-content">
 					<span class="card-title white-text">{{ $t('example.menu.inheritance.title') }}</span>
 					<p class="brown-text text-lighten-4">
 						{{ $t('example.menu.inheritance.text') }}
 					</p>
 				</div>
-			</div>
-			<div class="hoverable card cyan">
+			</router-link>
+			<router-link tag="div" to="/rs-json/example/wrap-up" class="hoverable on-hover-cursor-pointer card cyan">
 				<div class="card-content">
 					<span class="card-title white-text">{{ $t('example.menu.wrapUp.title') }}</span>
 					<p class="cyan-text text-lighten-4">
 						{{ $t('example.menu.wrapUp.text') }}
 					</p>
 				</div>
-			</div>
+			</router-link>
 		</div> 
 	</div>
 </rs-container>
