@@ -140,6 +140,40 @@ const messages = {
 					text: "Make your data more relevant by banning duplicate."
 				}
 			}
+		},
+		example: {
+			menu: {
+				singleModel: {
+					title: "Single model",
+					text:
+						"Learn the basics with this example showing how to modelize books in a book store."
+				},
+				oneToManyRelationship: {
+					title: "Many-to-one relationship",
+					text:
+						"Learn how to modelize many-to-one relationship. Featuring a book and its author relation."
+				},
+				manyToManyRelationship: {
+					title: "Many-to-many relationship",
+					text:
+						"See how to conceptualize many-to-many relationship. Featuring a book store use case: a book ordered a lot of times, and an order containing many books."
+				},
+				splittedSchema: {
+					title: "Splitted schema",
+					text:
+						"Learn how to separate your schema in small pieces to improve maintainability."
+				},
+				inheritance: {
+					title: "Inheritance",
+					text:
+						"Catch one of the most powerful concept of RS/JSON and learn how to gradually improve your schema over time."
+				},
+				wrapUp: {
+					title: "Wrap up",
+					text:
+						"All you need to know, in one complete example. Conceptualizing a book store and its business challenges."
+				}
+			}
 		}
 	},
 	fr: {
@@ -285,6 +319,40 @@ const messages = {
 					title: "Unicité",
 					text:
 						"Rendez vos données plus pertinentes en interdisant les doublons."
+				}
+			}
+		},
+		example: {
+			menu: {
+				singleModel: {
+					title: "Model simple",
+					text:
+						"Apprenez les bases avec cette example montrant comment modéliser une modèle livre pour une librarie."
+				},
+				oneToManyRelationship: {
+					title: "Relation 1 vers N",
+					text:
+						"Apprenez comment modélisez des relations 1 vers N. Exemple de modélisation d'une relation entre livre et son auteur."
+				},
+				manyToManyRelationship: {
+					title: "Relation N vers N",
+					text:
+						"Découvrez comment conceptualiser une relation N vers N. Example d'un livre commandé par plusieurs commandes, et d'une commande contenant plusieurs livre."
+				},
+				splittedSchema: {
+					title: "Schéma séparés",
+					text:
+						"Apprenez comment séparer vos schéma dans des fichiers distincts pour améliorer la maintenabilité."
+				},
+				inheritance: {
+					title: "Héritage",
+					text:
+						"Maîtrisez un des concepts les plus novateurs de RS/JSON et apprenez à graduellement améliorer votre schéma au fil des mises à jours de votre schéma."
+				},
+				wrapUp: {
+					title: "Résumé",
+					text:
+						"Tout ce dont vous avez besoin de savoir, en un exemple complet. Au menu, conceptualisatin d'une librairie et tous ses défis business."
 				}
 			}
 		}

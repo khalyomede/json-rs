@@ -7,64 +7,56 @@
 		</rs-breadcrumb>
 	</div>
 	<rs-spacer />
-	<div class="col s12 m4 l3 xl3">
-		<div class="card deep-purple">
-			<div class="card-content">
-			  	<span class="card-title white-text">Single model</span>
-			  	<p class="deep-purple-text text-lighten-4">
-					Learn the basics with this example showing how to modelize books in a book store.
-				</p>
+	<div class="col s12">
+		<div class="masonry xl3 l3 m4 s12">
+			<div class="hoverable card deep-purple">
+				<div class="card-content">
+					<span class="card-title white-text">{{ $t('example.menu.singleModel.title') }}</span>
+					<p class="deep-purple-text text-lighten-4">
+						{{ $t('example.menu.singleModel.text') }}
+					</p>
+				</div>
 			</div>
-		</div>
-	</div>
-	<div class="col s12 m4 l3 xl3">
-		<div class="card green">
-			<div class="card-content">
-				<span class="card-title white-text">Many-to-one relationship</span>
-				<p class="green-text text-lighten-4">
-					Learn how to modelize many-to-one relationship. Featuring a book and its author relation.
-				</p>
+			<div class="hoverable card green">
+				<div class="card-content">
+					<span class="card-title white-text">{{ $t('example.menu.oneToManyRelationship.title') }}</span>
+					<p class="green-text text-lighten-4">
+						{{ $t('example.menu.oneToManyRelationship.text') }}
+					</p>
+				</div>
 			</div>
-		</div>
-	</div>
-	<div class="col s12 m4 l3 xl3">
-		<div class="card deep-orange">
-			<div class="card-content">
-				<span class="card-title white-text">Many-to-many relationship</span>
-				<p class="deep-orange-text text-lighten-4">
-					See how to conceptualize many-to-many relationship. Featuring a book store use case: a book ordered a lot of times, and an order containing many books.
-				</p>
+			<div class="hoverable card deep-orange">
+				<div class="card-content">
+					<span class="card-title white-text">{{ $t('example.menu.manyToManyRelationship.title') }}</span>
+					<p class="deep-orange-text text-lighten-4">
+						{{ $t('example.menu.manyToManyRelationship.text') }}
+					</p>
+				</div>
 			</div>
-		</div>
-	</div>
-	<div class="col s12 m4 l3 xl3">
-		<div class="card indigo">
-			<div class="card-content">
-				<span class="card-title white-text">Splitted schema</span>
-				<p class="indigo-text text-lighten-4">
-					Learn how to separate your schema in small pieces to improve maintainability.
-				</p>
+			<div class="hoverable card indigo">
+				<div class="card-content">
+					<span class="card-title white-text">{{ $t('example.menu.splittedSchema.title') }}</span>
+					<p class="indigo-text text-lighten-4">
+						{{ $t('example.menu.splittedSchema.text') }}
+					</p>
+				</div>
 			</div>
-		</div>
-	</div>
-	<div class="col s12 m4 l3 xl3">
-		<div class="card brown">
-			<div class="card-content">
-				<span class="card-title white-text">Inheritance</span>
-				<p class="brown-text text-lighten-4">
-					Catch one of the most powerful concept of RS/JSON and learn how to gradually improve your schema over time.
-				</p>
+			<div class="hoverable card brown">
+				<div class="card-content">
+					<span class="card-title white-text">{{ $t('example.menu.inheritance.title') }}</span>
+					<p class="brown-text text-lighten-4">
+						{{ $t('example.menu.inheritance.text') }}
+					</p>
+				</div>
 			</div>
-		</div>
-	</div>
-	<div class="col s12 m4 l3 xl3">
-		<div class="card cyan">
-			<div class="card-content">
-				<span class="card-title white-text">Wrap up</span>
-				<p class="cyan-text text-lighten-4">
-					All you need to know, in one complete example. Conceptualizing a book store and its business challenges.
-				</p>
+			<div class="hoverable card cyan">
+				<div class="card-content">
+					<span class="card-title white-text">{{ $t('example.menu.wrapUp.title') }}</span>
+					<p class="cyan-text text-lighten-4">
+						{{ $t('example.menu.wrapUp.text') }}
+					</p>
+				</div>
 			</div>
-		</div>
+		</div> 
 	</div>
 </rs-container>
