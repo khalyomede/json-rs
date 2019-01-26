@@ -1,0 +1,65 @@
+<rs-container>
+    <rs-spacer />
+    <div class="col s12">
+        <rs-breadcrumb>
+            <rs-breadcrumb-item to="/rs-json" v-bind:text="$t('breadcrumb.home.text')" />
+            <rs-breadcrumb-item to="/rs-json/example" v-bind:text="$t('breadcrumb.example.text')" />
+            <rs-breadcrumb-item to="/rs-json/example" v-bind:text="$t('breadcrumb.example.singleModel.text')" />
+        </rs-breadcrumb>
+    </div>
+    <div class="col s12">
+        <rs-paragraph>
+            {{ $t('example.singleModel.statements') }}
+        </rs-paragraph>
+        <rs-paragraph>
+            {{ $t('example.singleModel.introduction') }}
+        </rs-paragraph>
+    </div>
+    <div class="col s12 m8 l6 offset-m2 offset-l3">
+        <rs-card>
+            <div slot="title">book-store.rs.json</div>
+            <div slot="content">
+                <rs-code lang="json">{
+  "version": "0.1.0",
+  "license": "MIT",
+  "charset": "utf8",
+  "schema": {
+    "book": {
+      "identifier": ["id"],
+      "uniques": {
+        "unique_book_isbn": ["isbn"]
+      },
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "isbn": {
+          "type": "string",
+          "maximum": "17",
+          "guards": ["isbn:13"]
+        }
+      }
+    }
+  }
+}</rs-code>
+            </div>
+        </rs-card>
+    </div>
+    <div class="col s12">
+        <rs-paragraph v-html="$t('example.singleModel.explainationIntroduction')"></rs-paragraph>
+        <rs-collapsible>
+            <rs-collapsible-item class="active flow-text" v-bind:title="$t('example.singleModel.explaination.identifier.title')">
+                <div v-html="$t('example.singleModel.explaination.identifier.text')"></div>
+            </rs-collapsible-item>
+            <rs-collapsible-item class="flow-text" v-bind:title="$t('example.singleModel.explaination.uniques.title')">
+                <div v-html="$t('example.singleModel.explaination.uniques.text')"></div>
+            </rs-collapsible-item>
+            <rs-collapsible-item class="flow-text" v-bind:title="$t('example.singleModel.explaination.properties.title')">
+                <div v-html="$t('example.singleModel.explaination.properties.text')"></div>
+            </rs-collapsible-item>
+        </rs-collapsible>
+    </div>
+</rs-container>

@@ -75,6 +75,12 @@ const messages = {
 				text: "Example",
 				singleModel: {
 					text: "Single model"
+				},
+				manyToOneRelationship: {
+					text: "Many to one relationship"
+				},
+				manyToManyRelationship: {
+					text: "Many to many relationship"
 				}
 			}
 		},
@@ -151,7 +157,7 @@ const messages = {
 					text:
 						"Learn the basics with this example showing how to modelize books in a book store."
 				},
-				oneToManyRelationship: {
+				manyToOneRelationship: {
 					title: "Many-to-one relationship",
 					text:
 						"Learn how to modelize many-to-one relationship. Featuring a book and its author relation."
@@ -206,6 +212,18 @@ const messages = {
 							"As you can see, properties are naturally written with RS/JSON. It is shipped with native types and other attribute to customize your column (like for <code>isbn</code>)."
 					}
 				}
+			},
+			manyToOneRelationship: {
+				introduction:
+					"A many to one relationship can be seen as you selecting a single value using a select dropdown.",
+				syntax:
+					"One example of many to one relation is a Book and its Author: there is plenty of author around, and a book have only one author (in our conception).",
+				preExampleText:
+					"Let us see how to write such a relation using RS/JSON.",
+				cardinality:
+					"To make a many to one relationship, the attribute <code>maximum</code> should be set to 1, and the <code>minimum</code> either 0 or 1.",
+				cardinalityExplained:
+					"In this example we use a 1 - 1 cardinality because a book must have one and only one author. This means when we create a book, we must also provide an author."
 			}
 		}
 	},
@@ -286,6 +304,12 @@ const messages = {
 				text: "Exemple",
 				singleModel: {
 					text: "Modèle simple"
+				},
+				manyToOneRelationship: {
+					text: "Relation N vers 1"
+				},
+				manyToManyRelationship: {
+					text: "Relation N vers N"
 				}
 			}
 		},
@@ -365,7 +389,7 @@ const messages = {
 					text:
 						"Apprenez les bases avec cette example montrant comment modéliser une modèle livre pour une librarie."
 				},
-				oneToManyRelationship: {
+				manyToOneRelationship: {
 					title: "Relation 1 vers N",
 					text:
 						"Apprenez comment modélisez des relations 1 vers N. Exemple de modélisation d'une relation entre livre et son auteur."

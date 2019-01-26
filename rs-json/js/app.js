@@ -308,6 +308,20 @@ const router = new VueRouter({
 			}
 		},
 		{
+			name: "example-many-to-one-relationship",
+			path: "/rs-json/example/many-to-one-relationship",
+			component: function(resolve, reject) {
+				template(resolve, reject, "example/many-to-one-relationship");
+			}
+		},
+		{
+			name: "example-many-to-many-relationship",
+			path: "/rs-json/example/many-to-many-relationship",
+			component: function(resolve, reject) {
+				template(resolve, reject, "example/many-to-many-relationship");
+			}
+		},
+		{
 			name: "try-it",
 			path: "/rs-json/try-it",
 			component: function(resolve, reject) {

@@ -1,0 +1,68 @@
+<rs-container>
+    <rs-spacer />
+    <div class="col s12">
+        <rs-breadcrumb>
+            <rs-breadcrumb-item to="/rs-json" v-bind:text="$t('breadcrumb.home.text')" />
+            <rs-breadcrumb-item to="/rs-json/example" v-bind:text="$t('breadcrumb.example.text')" />
+            <rs-breadcrumb-item to="/rs-json/example/many-to-one-relationship" v-bind:text="$t('breadcrumb.example.manyToOneRelationship.text')" />
+        </rs-breadcrumb>
+    </div>
+    <div class="col s12">
+        <rs-paragraph>
+            {{ $t('example.manyToOneRelationship.introduction') }}
+        </rs-paragraph>
+        <rs-paragraph>
+            {{ $t('example.manyToOneRelationship.syntax') }}
+        </rs-paragraph>
+        <rs-paragraph>
+            {{ $t('example.manyToOneRelationship.preExampleText') }}
+        </rs-paragraph>
+    </div>
+    <div class="col s12 m8 l6 offset-m2 offset-l3">
+        <rs-card>
+            <div slot="title">book-store.rs.json</div>
+            <div slot="content">
+                <rs-code lang="json">{
+  "version": "0.1.0",
+  "license": "MIT",
+  "charset": "utf8",
+  "schema": {
+    "book": {
+      "identifier": ["id"],
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "author": {
+          "type": "relation",
+          "minimum": 1,
+          "maximum": 1
+        }
+      }
+    },
+    "author": {
+      "identifier": ["id"],
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}</rs-code>
+            </div>
+        </rs-card>
+    </div>
+    <div class="col s12">
+        <rs-paragraph v-html="$t('example.manyToOneRelationship.cardinality')"></rs-paragraph>
+        <rs-paragraph>
+            {{ $t('example.manyToOneRelationship.cardinalityExplained') }}
+        </rs-paragraph>
+    </div>
+</rs-container>

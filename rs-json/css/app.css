@@ -142,3 +142,7 @@ main {
 		column-count: 4;
 	}
 }
+
+.border-none {
+	border: none;
+}
