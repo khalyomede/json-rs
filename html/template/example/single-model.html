@@ -51,13 +51,13 @@
     <div class="col s12">
         <rs-paragraph v-html="$t('example.singleModel.explainationIntroduction')"></rs-paragraph>
         <rs-collapsible>
-            <rs-collapsible-item class="active flow-text" v-bind:title="$t('example.singleModel.explaination.identifier.title')">
+            <rs-collapsible-item active v-bind:title="$t('example.singleModel.explaination.identifier.title')">
                 <div v-html="$t('example.singleModel.explaination.identifier.text')"></div>
             </rs-collapsible-item>
-            <rs-collapsible-item class="flow-text" v-bind:title="$t('example.singleModel.explaination.uniques.title')">
+            <rs-collapsible-item v-bind:title="$t('example.singleModel.explaination.uniques.title')">
                 <div v-html="$t('example.singleModel.explaination.uniques.text')"></div>
             </rs-collapsible-item>
-            <rs-collapsible-item class="flow-text" v-bind:title="$t('example.singleModel.explaination.properties.title')">
+            <rs-collapsible-item v-bind:title="$t('example.singleModel.explaination.properties.title')">
                 <div v-html="$t('example.singleModel.explaination.properties.text')"></div>
             </rs-collapsible-item>
         </rs-collapsible>

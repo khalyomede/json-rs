@@ -224,6 +224,27 @@ const messages = {
 					"To make a many to one relationship, the attribute <code>maximum</code> should be set to 1, and the <code>minimum</code> either 0 or 1.",
 				cardinalityExplained:
 					"In this example we use a 1 - 1 cardinality because a book must have one and only one author. This means when we create a book, we must also provide an author."
+			},
+			manyToManyRelationship: {
+				introduction:
+					"One example of many to many relationship could be books and order. A book can be ordered in many orders, and an order can contain many books in it.",
+				preExemple: "Let us try to modelize this use case.",
+				explainationIntroduction:
+					"Many to many relationship are a bit more complex, but still remain intuitive and consistent. We can our example this in three main parts.",
+				explaination: {
+					book: {
+						title: "Book",
+						text: ""
+					},
+					order: {
+						title: "Order",
+						text: ""
+					},
+					bookOrder: {
+						title: "Book orders",
+						text: ""
+					}
+				}
 			}
 		}
 	},

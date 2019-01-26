@@ -7,4 +7,98 @@
             <rs-breadcrumb-item to="/rs-json/example/many-to-many-relationship" v-bind:text="$t('breadcrumb.example.manyToManyRelationship.text')" />
         </rs-breadcrumb>
     </div>
+    <div class="col s12">
+        <rs-paragraph>
+            {{ $t('example.manyToManyRelationship.introduction') }}
+        </rs-paragraph>
+        <rs-paragraph>
+            {{ $t('example.manyToManyRelationship.preExemple') }}
+        </rs-paragraph>
+    </div>
+    <div class="col s12 m8 l6 offset-m2 offset-l3">
+        <rs-card>
+            <div slot="title">book-store.rs.json</div>
+            <div slot="content">
+                <rs-code lang="json">{
+  "version": "0.1.0",
+  "license": "MIT",
+  "charset": "utf8",
+  "schema": {
+    "book": {
+      "identifier": ["id"],
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "orders": {
+          "type": "relation",
+          "through": "bookOrder",
+          "using": "bookId",
+          "minimum": 0,
+          "maximum": null
+        }
+      }
+    },
+    "order": {
+      "identifier": ["id"],
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "customer": {
+          "type": "string"
+        },
+        "books": {
+          "type": "relation",
+          "through": "bookOrder",
+          "using": "orderId",
+          "minimum": 0,
+          "maximum": null
+        }
+      }
+    },
+    "bookOrder": {
+      "for": "book_order",
+      "identifier": ["bookId", "orderId"],
+      "properties": {
+        "bookId": {
+          "type": "relation",
+          "for": "book",
+          "minimum": 1,
+          "maximum": 1
+        },
+        "orderId": {
+          "type": "relation",
+          "for": "order",
+          "minimum": 1,
+          "maximum": 1
+        }
+      }
+    }
+  }                    
+}</rs-code>
+            </div>
+        </rs-card>
+    </div>
+    <div class="col s12">
+        <rs-paragraph>
+            {{ $t('example.manyToManyRelationship.explainationIntroduction') }}
+        </rs-paragraph>
+    </div>
+    <div class="col s12">
+        <rs-collapsible>
+            <rs-collapsible-item v-bind:title="$t('example.manyToManyRelationship.explaination.book.title')">
+                {{ $t('example.manyToManyRelationship.explaination.book.text') }}
+            </rs-collapsible-item>
+            <rs-collapsible-item v-bind:title="$t('example.manyToManyRelationship.explaination.order.title')">
+                {{ $t('example.manyToManyRelationship.explaination.order.text') }}
+            </rs-collapsible-item>
+            <rs-collapsible-item v-bind:title="$t('example.manyToManyRelationship.explaination.bookOrder.title')">
+                {{ $t('example.manyToManyRelationship.explaination.bookOrder.title') }}
+            </rs-collapsible-item>
+        </rs-collapsible>
+    </div>
 </rs-container>

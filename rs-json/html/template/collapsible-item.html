@@ -1,5 +1,5 @@
-<li>
-	<div class="collapsible-header amber darken-3 white-text border-none">
+<li v-bind:class="active ? 'active' : ''">
+	<div class="collapsible-header amber darken-3 white-text border-none flow-text">
 		{{ title }}
 	</div>
 	<div class="collapsible-body">

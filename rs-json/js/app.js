@@ -802,8 +802,6 @@ class CreateExampleTables extends Migration {`;
 										return;
 									}
 
-									console.log(model.uniques);
-
 									for (const uniqueName in model.uniques) {
 										const unique =
 											model.uniques[uniqueName];
@@ -969,7 +967,6 @@ const vue = new Vue({
 });
 
 router.beforeEach(function(to, from, next) {
-	console.log(to);
 	vue.loading = true;
 
 	next();
