@@ -322,6 +322,13 @@ const router = new VueRouter({
 			}
 		},
 		{
+			name: "example-splitted-schema",
+			path: "/rs-json/example/splitted-schema",
+			component: function(resolve, reject) {
+				template(resolve, reject, "example/splitted-schema");
+			}
+		},
+		{
 			name: "try-it",
 			path: "/rs-json/try-it",
 			component: function(resolve, reject) {

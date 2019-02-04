@@ -81,6 +81,9 @@ const messages = {
 				},
 				manyToManyRelationship: {
 					text: "Many to many relationship"
+				},
+				splittedSchema: {
+					text: "Splitted schema"
 				}
 			}
 		},
@@ -331,6 +334,9 @@ const messages = {
 				},
 				manyToManyRelationship: {
 					text: "Relation N vers N"
+				},
+				splittedSchema: {
+					text: "Schémas séparés"
 				}
 			}
 		},
