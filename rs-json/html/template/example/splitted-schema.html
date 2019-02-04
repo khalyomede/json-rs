@@ -26,40 +26,40 @@
             <div slot="title">book-store-book.rs.json</div>
             <div slot="content">
                 <rs-code lang="json">{
-    "name": "book",
-    "version": "0.1.0",
-    "license": "MIT",
-    "charset": "utf8",
-    "schema": {
-        "book": {
-            "identifier": ["id"],
-            "properties": {
-                "id": {
-                    "type": "integer"
-                },
-                "name": {
-                    "type:" "string"
-                },
-                "author": {
-                    "type": "relation",
-                    "using": "author_id",
-                    "minimum": 1,
-                    "maximum": 1
-                }
-            }
+  "name": "book",
+  "version": "0.1.0",
+  "license": "MIT",
+  "charset": "utf8",
+  "schema": {
+    "book": {
+      "identifier": ["id"],
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "name": {
+          "type:" "string"
         },
         "author": {
-            "identifier": ["id"],
-            "properties": {
-                "id": {
-                    "type": "integer"
-                },
-                "name": {
-                    "type": "string"
-                }
-            }
+          "type": "relation",
+          "using": "author_id",
+          "minimum": 1,
+          "maximum": 1
         }
+      }
+    },
+    "author": {
+      "identifier": ["id"],
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        }
+      }
     }
+  }
 }</rs-code>
             </div>
         </rs-card>
@@ -69,40 +69,40 @@
             <div slot="title">book-store-order.rs.json</div>
             <div slot="content">
                 <rs-code lang="json">{
-    "requires": ["book"],
-    "version": "0.1.0",
-    "license": "MIT",
-    "schema": {
-        "order": {
-            "identifier": ["id"],
-            "properties": {
-                "id": {
-                    "type": "integer"
-                },
-                "customer": {
-                    "type": "string"
-                }
-            }
+  "requires": ["book"],
+  "version": "0.1.0",
+  "license": "MIT",
+  "schema": {
+    "order": {
+      "identifier": ["id"],
+      "properties": {
+        "id": {
+          "type": "integer"
         },
-        "bookOrder": {
-            "properties": {
-                "book": {
-                    "type": "relation",
-                    "for": "book",
-                    "using": "book_id",
-                    "minimum": 0,
-                    "maximum": null
-                },
-                "order": {
-                    "type": "relation",
-                    "for": "order",
-                    "using": "order_id",
-                    "minimum": 0,
-                    "maximum": null
-                }
-            }
+        "customer": {
+          "type": "string"
         }
-    }            
+      }
+    },
+    "bookOrder": {
+      "properties": {
+        "book": {
+          "type": "relation",
+          "for": "book",
+          "using": "book_id",
+          "minimum": 0,
+          "maximum": null
+        },
+        "order": {
+          "type": "relation",
+          "for": "order",
+          "using": "order_id",
+          "minimum": 0,
+          "maximum": null
+        }
+      }
+    }
+  }            
 }</rs-code>
             </div>
         </rs-card>
